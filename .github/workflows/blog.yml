@@ -7,7 +7,7 @@ jobs:
   get-issues:
     runs-on: ubuntu-latest
     steps:
-      - name: View issue information
+      - name: View the target issue information
         run: |
           echo "Issue title: ${{ github.event.issue.title }}"
           echo "Issue body: ${{ github.event.issue.body }}"
@@ -16,3 +16,7 @@ jobs:
         run: echo "$GITHUB_CONTEXT"
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
+
+      - name: List all the issues in the repo
+        run: |
+          echo "Issue URL: ${{ github.repository.issues_url }}"
