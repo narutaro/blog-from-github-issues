@@ -28,7 +28,7 @@ jobs:
           route: GET /repos/{owner}/{repo}/issues
           owner: narutaro
           repo: blog
-        #env:
-          #GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: "echo latest release: ${{ steps.api.outputs.data }}"
 
