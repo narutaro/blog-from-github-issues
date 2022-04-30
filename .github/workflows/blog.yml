@@ -22,19 +22,11 @@ jobs:
           echo "Issue URL: ${{ github.event.repository.id }}"
           echo "Issue URL: ${{ github.event.repository.issues_url }}"
 
-            #      - uses: octokit/request-action@v2.x
-            #        id: api
-            #        with:
-            #      route: GET /repos/{owner}/{repo}/issues
-            #  owner: narutaro
-            #          repo: blog
-            #       env:
-            #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            #- run: "echo response: ${{ steps.api.outputs.data }}"
       - uses: actions/github-script@v6
         with:
           script: |
-            const url = "https://api.github.com/repos/narutaro/blog/issues"
+            #const url = "https://api.github.com/repos/narutaro/blog/issues"
+            const url = "https://api.github.com/repos/${{ github.repository }}/issues"
             const res = await github.request(url)
             console.log(res)
 
