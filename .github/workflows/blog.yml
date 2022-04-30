@@ -19,4 +19,4 @@ jobs:
 
       - name: List all the issues in the repo
         run: |
-          echo "Issue URL: ${{ github.repository.issues_url }}"
+          echo "Issue URL: ${{ github.repository.id }}"
