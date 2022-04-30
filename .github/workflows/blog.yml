@@ -23,10 +23,17 @@ jobs:
           echo "Issue URL: ${{ github.event.repository.issues_url }}"
 
       - uses: actions/github-script@v6
+        id: check-context
+        with:
+          script: |
+            console.log(context)
+
+      - uses: actions/github-script@v6
         with:
           script: |
             #const url = "https://api.github.com/repos/narutaro/blog/issues"
-            const url = "https://api.github.com/repos/" + context.repo.repo + "/issues"
-            const res = await github.request(url)
-            console.log(res)
+            console.log(context)
+            #const url = "https://api.github.com/repos/" + context.repo.repo + "/issues"
+            #const res = await github.request(url)
+            #console.log(res)
 
