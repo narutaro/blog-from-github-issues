@@ -43,4 +43,4 @@ jobs:
             console.log(html.data)
       
       - name: Read post.html
-        run: echo post.html
+        run: cat post.html
