@@ -37,6 +37,6 @@ jobs:
           script: |
             const { Octokit } = require("@octokit/rest");
             const octokit = new Octokit({});
-            html = await octokit.request('POST /markdown', {"text": context.payload.issue.body})
+            html = await octokit.request('POST /markdown', {"text": context.payload.issue.body, "mode": "gfm"})
             console.log(html)
             console.log(html.data)
