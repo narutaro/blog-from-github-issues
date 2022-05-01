@@ -31,5 +31,7 @@ jobs:
       - uses: actions/github-script@v6
         with:
           script: |
+            const { Octokit } = require("@octokit/rest");
+            const octokit = new Octokit({});
             html = await octokit.request('POST /markdown', {"text": "#Hello"})
             console.log(html)
