@@ -10,6 +10,7 @@ jobs:
       - name: View the target issue information
         run: |
           echo "repo: ${{ github.repository }}"
+          echo "workspace: ${{$GITHUB_WORKSPACE}}"
 
       - name: View the github context
         run: echo "$GITHUB_CONTEXT"
@@ -44,6 +45,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           repository: 'tests-always-included/mo'
+          path: 'mo'
           
       - name: mo test
         run: |
