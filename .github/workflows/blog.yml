@@ -49,8 +49,9 @@ jobs:
           
       - name: mo test
         run: |
-          export MSG=${{ github.repository }}
-          echo "Your message: {{TEST}}" | mo/mo
+          echo "Your repo: {{REPO}}" | mo/mo
+        env:
+          REPO: ${{github.repository}}
       
       - uses: actions/checkout@v3  
       - name: Read post.html
