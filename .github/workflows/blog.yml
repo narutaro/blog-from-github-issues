@@ -49,7 +49,7 @@ jobs:
           
       - name: mo test
         run: |
-          export TEST="This is a test"
+          export MSG=${{ github.repository }}
           echo "Your message: {{TEST}}" | mo/mo
       
       - uses: actions/checkout@v3  
