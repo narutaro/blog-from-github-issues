@@ -42,7 +42,8 @@ jobs:
             console.log(html.data)
             
       - uses: actions/checkout@v3
-          with: repository: 'tests-always-included/mo'
+          with:
+            repository: 'tests-always-included/mo'
         run: |
           export TEST="This is a test"
           echo "Your message: {{TEST}}" | mo
