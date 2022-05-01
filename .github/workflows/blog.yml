@@ -44,12 +44,11 @@ jobs:
       - uses: actions/checkout@v3
         with:
           repository: 'tests-always-included/mo'
-          path: mo
           
       - name: mo test
         run: |
           export TEST="This is a test"
-          echo "Your message: {{TEST}}" | mo
+          echo "Your message: {{TEST}}" | mo/mo
       
       - uses: actions/checkout@v3  
       - name: Read post.html
