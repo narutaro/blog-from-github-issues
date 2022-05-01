@@ -27,6 +27,7 @@ jobs:
         with:
           script: |
             console.log(context)
+            console.log(context.event.issue.body)
             
       - name: Single line
         id: single-line
