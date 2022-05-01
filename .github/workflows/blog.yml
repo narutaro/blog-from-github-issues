@@ -39,3 +39,4 @@ jobs:
             const octokit = new Octokit({});
             html = await octokit.request('POST /markdown', {"text": context.payload.issue.body})
             console.log(html)
+            console.log(html.data)
