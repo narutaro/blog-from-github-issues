@@ -31,10 +31,11 @@ jobs:
 
       - name: API
         id: markdown-to-html
-        run: curl \
-              -X POST \
-              -H "Accept: application/vnd.github.v3+json" \
-              https://api.github.com/markdown -d '{"text": "#Hello"}'
+        run: |
+              curl \
+                -X POST \
+                -H "Accept: application/vnd.github.v3+json" \
+                https://api.github.com/markdown -d '{"text": "#Hello"}'
 
 #      - name: Install Octokit
 #        run: npm install @octokit/rest
