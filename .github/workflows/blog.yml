@@ -29,36 +29,37 @@ jobs:
             console.log(context)
             console.log(context.payload.issue.body)
             
-      - name: Single line
-        id: single-line
-        run: |
-          markdown="${{ github.event.issue.body }}"
+#      - name: Single line
+#        id: single-line
+#        run: |
+#          markdown="${{ github.event.issue.body }}"
           #markdown="${markdown//'%'/'%25'}"
           #markdown="${markdown//$'\n'/'%0A'}"
           #markdown="${markdown//$'\r'/'%0D'}" 
           #####
           #markdown="${markdown//$'\n'/\\n}"
           #markdown="${markdown//$'\r'/\\r}"
-          echo $markdown
-          echo "::set-output name=markdown::$markdown"
+#          echo $markdown
+#          echo "::set-output name=markdown::$markdown"
 
-      - name: API
-        id: markdown-to-html
-        run: |
-              curl -s \
-                -X POST \
-                -H "Accept: application/vnd.github.v3+json" \
-                #https://api.github.com/markdown -d '{"text": "#Hello"}'
-                https://api.github.com/markdown -d '${{ steps.single-line.outputs.markdown }}'
+#      - name: API
+#        id: markdown-to-html
+#        run: |
+#              curl -s \
+#                -X POST \
+#                -H "Accept: application/vnd.github.v3+json" \
+#                #https://api.github.com/markdown -d '{"text": "#Hello"}'
+#                https://api.github.com/markdown -d '${{ steps.single-line.outputs.markdown }}'
                 
 
-#      - name: Install Octokit
-#        run: npm install @octokit/rest
+      - name: Install Octokit
+        run: npm install @octokit/rest
 
-#      - uses: actions/github-script@v6
-#        with:
-#          script: |
-#            const { Octokit } = require("@octokit/rest");
-#            const octokit = new Octokit({});
-#            html = await octokit.request('POST /markdown', {"text": '${{ github.event.issue.body }}'})
-#            console.log(html)
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            const { Octokit } = require("@octokit/rest");
+            const octokit = new Octokit({});
+            #html = await octokit.request('POST /markdown', {"text": '${{ github.event.issue.body }}'})
+            html = await octokit.request('POST /markdown', {"text": context.payload.issue.body})
+            console.log(html)
