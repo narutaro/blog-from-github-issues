@@ -41,7 +41,7 @@ jobs:
             html = await octokit.request('POST /markdown', {"text": context.payload.issue.body, "mode": "gfm"})
             console.log(html)
             console.log(html.data)
-      
+            
+      - uses: actions/checkout@v3  
       - name: Read post.html
-      - uses: actions/checkout@v3
         run: cat post.html
