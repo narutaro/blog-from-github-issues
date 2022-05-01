@@ -43,4 +43,5 @@ jobs:
             console.log(html.data)
       
       - name: Read post.html
+      - uses: actions/checkout@v3
         run: cat post.html
