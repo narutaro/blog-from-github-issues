@@ -28,14 +28,21 @@ jobs:
         with:
           script: |
             console.log(context)
-            
-      - name: Install Octokit
-        run: npm install @octokit/rest
 
-      - uses: actions/github-script@v6
-        with:
-          script: |
-            const { Octokit } = require("@octokit/rest");
-            const octokit = new Octokit({});
-            html = await octokit.request('POST /markdown', {"text": '${{ github.event.issue.body }}'})
-            console.log(html)
+      - name: API
+        id: markdown-to-html
+        run: curl \
+              -X POST \
+              -H "Accept: application/vnd.github.v3+json" \
+              https://api.github.com/markdown -d '{"text": "#Hello"}'
+
+#      - name: Install Octokit
+#        run: npm install @octokit/rest
+
+#      - uses: actions/github-script@v6
+#        with:
+#          script: |
+#            const { Octokit } = require("@octokit/rest");
+#            const octokit = new Octokit({});
+#            html = await octokit.request('POST /markdown', {"text": '${{ github.event.issue.body }}'})
+#            console.log(html)
