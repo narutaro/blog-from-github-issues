@@ -11,6 +11,7 @@ jobs:
         run: |
           echo "Issue title: ${{ github.event.issue.title }}"
           echo "Issue body: ${{ github.event.issue.body }}"
+          echo "Issue body: ${ github.event.issue.body }"
 
       - name: View the github context
         run: echo "$GITHUB_CONTEXT"
@@ -36,5 +37,5 @@ jobs:
           script: |
             const { Octokit } = require("@octokit/rest");
             const octokit = new Octokit({});
-            html = await octokit.request('POST /markdown', {"text": "${{ github.event.issue.body }}"})
+            html = await octokit.request('POST /markdown', {"text": '${{ github.event.issue.body }}'})
             console.log(html)
