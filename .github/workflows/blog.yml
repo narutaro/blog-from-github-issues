@@ -9,8 +9,9 @@ jobs:
     steps:
       - name: View the target issue information
         run: |
-          echo "Issue title: ${{ github.event.issue.title }}"
-          echo "Issue body: ${{ github.event.issue.body }}"
+          # echo "Issue title: ${{ github.event.issue.title }}"
+          # echo "Issue body: ${{ github.event.issue.body }}"
+          echo "${{ github.repository }}"
 
       - name: View the github context
         run: echo "$GITHUB_CONTEXT"
@@ -42,6 +43,9 @@ jobs:
             console.log(html)
             console.log(html.data)
             
+      - uses: actions/checkout@v3
+          with: repository: ''
+      
       - uses: actions/checkout@v3  
       - name: Read post.html
         run: cat post.html
