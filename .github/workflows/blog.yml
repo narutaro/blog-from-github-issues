@@ -27,6 +27,9 @@ jobs:
         with:
           script: |
             console.log(context)
+            
+      - name: Install Octokit
+        run: npm install @octokit/rest
 
       - uses: actions/github-script@v6
         with:
