@@ -35,8 +35,9 @@ jobs:
           #markdown="${markdown//'%'/'%25'}"
           #markdown="${markdown//$'\n'/'%0A'}"
           #markdown="${markdown//$'\r'/'%0D'}" 
-          markdown="${markdown//$'\n'/\\n}"
-          markdown="${markdown//$'\r'/\\r}"
+          #####
+          #markdown="${markdown//$'\n'/\\n}"
+          #markdown="${markdown//$'\r'/\\r}"
           echo $markdown
           echo "::set-output name=markdown::$markdown"
 
