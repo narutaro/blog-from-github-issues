@@ -33,6 +33,7 @@ jobs:
         run: npm install @octokit/rest
 
       - uses: actions/github-script@v6
+        id: markdown-to-html
         with:
           script: |
             const { Octokit } = require("@octokit/rest");
