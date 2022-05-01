@@ -10,7 +10,7 @@ jobs:
       - name: View the target issue information
         run: |
           echo "repo: ${{ github.repository }}"
-          echo "workspace: ${{$GITHUB_WORKSPACE}}"
+          echo $GITHUB_WORKSPACE
 
       - name: View the github context
         run: echo "$GITHUB_CONTEXT"
