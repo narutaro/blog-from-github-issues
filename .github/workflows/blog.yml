@@ -57,8 +57,8 @@ jobs:
         run: |
           echo "POST_HTML is {{REPO}}" | mo/mo
         env:
-          #REPO: ${{steps.markdown-to-html.outputs}}
-          REPO: "here"
+          REPO: ${{steps.markdown-to-html.outputs.result}}
+          #REPO: "here"
       
       - uses: actions/checkout@v3  
       - name: Read post.html
