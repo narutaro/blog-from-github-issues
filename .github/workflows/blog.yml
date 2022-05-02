@@ -39,8 +39,9 @@ jobs:
             const { Octokit } = require("@octokit/rest");
             const octokit = new Octokit({});
             html = await octokit.request('POST /markdown', {"text": context.payload.issue.body, "mode": "gfm"})
-            console.log(html)
+            // console.log(html)
             console.log(html.data)
+            return html.data
             
       - uses: actions/checkout@v3
         with:
@@ -49,9 +50,9 @@ jobs:
           
       - name: mo test
         run: |
-          echo "Your repo: {{REPO}}" | mo/mo
+          echo "POST_HTML is {{REPO}}" | mo/mo
         env:
-          REPO: ${{github.repository}}
+          REPO: ${{steps.markdown-to-html.outputs}}
       
       - uses: actions/checkout@v3  
       - name: Read post.html
