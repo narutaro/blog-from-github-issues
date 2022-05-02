@@ -39,7 +39,12 @@ jobs:
             const { Octokit } = require("@octokit/rest");
             const octokit = new Octokit({});
             //html = await octokit.request('POST /markdown', {"text": context.payload.issue.body, "mode": "gfm"})
-            html = await octokit.request('POST /markdown', {"text": github.event.issue.body, "mode": "gfm"})
+            
+            //html = await octokit.request('POST /markdown', {"text": github.event.issue.body, "mode": "gfm"})
+            //Error: Unhandled error: TypeError: Cannot read properties of undefined (reading 'issue')
+            
+            html = await octokit.request('POST /markdown', {"text": ${{github.event.issue.body}}, "mode": "gfm"})
+
             // console.log(html)
             console.log(html.data)
             return html.data
