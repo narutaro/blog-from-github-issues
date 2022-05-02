@@ -61,7 +61,7 @@ jobs:
           
       - name: mo test
         run: |
-          quoted=`echo  ${{steps.markdown-to-html.outputs.result}}`
+          echo "${{steps.markdown-to-html.outputs.result}}"
           echo "POST_HTML is {{REPO}}" | mo/mo
         env:
           REPO: "${{steps.markdown-to-html.outputs.result}}"
