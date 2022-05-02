@@ -44,7 +44,9 @@ jobs:
             return html.data
             
       - name: show output
-        run: echo ${{toJson(steps.markdown-to-html.outputs.result)}}
+        #run: echo ${{toJson(steps.markdown-to-html.outputs.result)}}
+        run: echo ${{steps.markdown-to-html.outputs.result}}
+
             
       - uses: actions/checkout@v3
         with:
