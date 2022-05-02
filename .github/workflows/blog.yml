@@ -46,8 +46,12 @@ jobs:
             
       - name: show output
         run: |
+          echo "toJson"
           echo ${{toJson(steps.markdown-to-html.outputs.result)}}
+          echo "as is"
           echo ${{steps.markdown-to-html.outputs.result}}
+          echo "quote"
+          echo "${{steps.markdown-to-html.outputs.result}}"
 
             
       - uses: actions/checkout@v3
