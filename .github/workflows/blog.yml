@@ -41,12 +41,12 @@ jobs:
             html = await octokit.request('POST /markdown', {"text": context.payload.issue.body, "mode": "gfm"})
             // console.log(html)
             console.log(html.data)
-            // return html.data
-            return console.log(html.data)
+            return html.data
+            // return console.log(html.data)
             
       - name: show output
         #run: echo ${{toJson(steps.markdown-to-html.outputs.result)}}
-        run: echo ${{steps.markdown-to-html.outputs.result}}
+        run: echo "${{steps.markdown-to-html.outputs.result}}"
 
             
       - uses: actions/checkout@v3
@@ -58,8 +58,9 @@ jobs:
         run: |
           echo "POST_HTML is {{REPO}}" | mo/mo
         env:
-          REPO: ${{steps.markdown-to-html.outputs.result}}
+          #REPO: ${{steps.markdown-to-html.outputs.result}}
           #REPO: "here"
+          REPO: "<h1>Table of contents</h1>\n<ul>\n<li>x1</li>\n<li>y2</li>"
       
       - uses: actions/checkout@v3  
       - name: Read post.html
