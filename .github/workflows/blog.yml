@@ -41,7 +41,8 @@ jobs:
             html = await octokit.request('POST /markdown', {"text": context.payload.issue.body, "mode": "gfm"})
             // console.log(html)
             console.log(html.data)
-            return html.data
+            // return html.data
+            return console.log(html.data)
             
       - name: show output
         #run: echo ${{toJson(steps.markdown-to-html.outputs.result)}}
