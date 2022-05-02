@@ -53,6 +53,8 @@ jobs:
             
       - name: show output
         run: |
+          echo "LF="
+          echo $LF
           echo "toJson"
           echo ${{toJson(steps.markdown-to-html.outputs.result)}}
           echo "as is"
