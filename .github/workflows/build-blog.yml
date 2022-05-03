@@ -42,6 +42,10 @@ jobs:
           echo $html
           echo "::set-output name=html::$html"
             
+      - uses: actions/checkout@v3  
+      - name: Read post.html
+        run: cat post.html
+
       - uses: actions/checkout@v3
         with:
           repository: 'tests-always-included/mo'
@@ -55,6 +59,4 @@ jobs:
         env:
           POST_HTML: ${{steps.markdown-to-html.outputs.html}}
       
-      - uses: actions/checkout@v3  
-      - name: Read post.html
-        run: cat post.html
+
