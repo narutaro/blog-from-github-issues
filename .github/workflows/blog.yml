@@ -69,7 +69,7 @@ jobs:
        
       - name: Mustache
         run: |
-          cat post.html | $GITHUB_WORKSPACE/mo/mo
+          cat post.html | ../mo/mo
         env:
           POST_HTML: "${{steps.escape.outputs.html}}"
       
