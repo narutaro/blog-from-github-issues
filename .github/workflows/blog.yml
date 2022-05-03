@@ -15,13 +15,13 @@ jobs:
       - name: View the github context
         run: echo "$GITHUB_CONTEXT"
         env:
-          GITHUB_CONTEXT: ${{toJson(github)}}
+          GITHUB_CONTEXT: ${{ toJson(github) }}
 
       - name: List all the issues in the repo
         run: |
-          echo "Repo ID: ${{github.event.repository.id}}"
-          echo "Issue URL: ${{github.event.repository.issues_url}}"
-          echo "Issue ID: ${{github.event.issue.id}}" 
+          echo "Repo ID: ${{ github.event.repository.id }}"
+          echo "Issue URL: ${{ github.event.repository.issues_url }}"
+          echo "Issue ID: ${{ github.event.issue.id }}" 
 
       - uses: actions/github-script@v6
         id: check-context
@@ -72,9 +72,9 @@ jobs:
    
       - name: Mustache
         run: |
-          cat post.html | mo/mo > ${{github.event.issue.id}}.html
+          cat post.html | mo/mo > ${{ github.event.issue.id }}.html
           echo "File here:"
-          cat ${{github.event.issue.id}}.html
+          cat ${{ github.event.issue.id }}.html
         env:
           POST_HTML: "${{steps.escape.outputs.html}}"   
    
