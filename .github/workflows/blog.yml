@@ -59,8 +59,8 @@ jobs:
       - uses: actions/checkout@v3  
       - id: checkout-this-repo
         run: |
-          post-template=${cat post.html}
-          echo "::set-output name=post-template::$post-template"      
+          template=`cat post.html`
+          echo "::set-output name=post-template::$template"      
        
       - uses: actions/checkout@v3
         with:
