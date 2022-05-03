@@ -22,6 +22,7 @@ jobs:
           md="${{github.event.issue.body}}"
           md="${md//$'\n'/\\n}"
           md="${md//$'\r'/\\r}"
+          echo $md
           echo "::set-output name=emd::$md"
 
       - name: List all the issues in the repo
@@ -38,6 +39,7 @@ jobs:
             https://api.github.com/markdown -d '{"text": "${{steps.escape-markdown.outputs.emd}}", "mode": "gfm"}'`
           html="${html//$'\n'/\\n}"
           html="${html//$'\r'/\\r}"
+          echo $html
           echo "::set-output name=html::$html"
             
       - uses: actions/checkout@v3
