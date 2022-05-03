@@ -75,10 +75,15 @@ jobs:
         env:
           POST_HTML: "${{steps.escape.outputs.html}}"   
    
-#      - name: Mustache
-#        run: |
-#          echo ${POST_TEMPLATE} | mo/mo
-#        env:
-#          POST_TEMPLATE: "${{steps.checkout-this-repo.outputs.post-template}}"
-#          POST_HTML: "${{steps.escape.outputs.html}}"
+      - name: Git setting
+        run: |
+          git config --local user.email "narusan@mac.com"
+          git config --local user.name "${{github.actor}}"
           
+      - name: Commit and push post
+        run: |
+          git add .
+          git commit -m "update" -a
+          git pull
+          git push origin master   
+   
