@@ -23,7 +23,7 @@ jobs:
           markdown="${markdown//$'\n'/'%0A'}"
           markdown="${markdown//$'\r'/'%0D'}"
           markdown="${markdown//'%'/'%25'}"
-          echo markdown
+          echo ${markdown}
 
       - name: List all the issues in the repo
         run: |
