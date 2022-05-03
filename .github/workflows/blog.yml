@@ -67,6 +67,9 @@ jobs:
       - name: Read tamplate for post
         run: cat post.html
        
+      - name: Find
+        run: find .
+       
       - name: Mustache
         run: |
           cat post.html | ../mo/mo
