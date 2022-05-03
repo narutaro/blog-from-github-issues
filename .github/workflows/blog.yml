@@ -57,8 +57,8 @@ jobs:
           echo "after: ${html}"
           echo "::set-output name=html::$html"
       
-      - uses: actions/checkout@v3  
-      - id: checkout-this-repo  
+      - uses: actions/checkout@v3
+        id: checkout-this-repo  
        
       - uses: actions/checkout@v3
         with:
