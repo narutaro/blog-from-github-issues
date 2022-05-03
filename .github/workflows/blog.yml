@@ -52,6 +52,11 @@ jobs:
         with:
           repository: 'tests-always-included/mo'
           path: 'mo'
+          
+      - name: Find after cheking out mo
+        run: |
+          pwd
+          find .
       
       - name: Escape
         id: escape
@@ -67,7 +72,7 @@ jobs:
       - name: Read tamplate for post
         run: cat post.html
        
-      - name: Find
+      - name: Find after cheking out this repo
         run: |
           pwd
           find .
