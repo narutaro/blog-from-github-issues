@@ -11,17 +11,14 @@ jobs:
         run: |
           echo "repo: ${{ github.repository }}"
           echo "workspace: $GITHUB_WORKSPACE"
+          echo "repo id: ${{ github.event.repository.id }}"
+          echo "issue url: ${{ github.event.repository.issues_url }}"
+          echo "issue id: ${{ github.event.issue.id }}" 
 
       - name: View the github context
         run: echo "$GITHUB_CONTEXT"
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
-
-      - name: List all the issues in the repo
-        run: |
-          echo "Repo ID: ${{ github.event.repository.id }}"
-          echo "Issue URL: ${{ github.event.repository.issues_url }}"
-          echo "Issue ID: ${{ github.event.issue.id }}" 
 
       - uses: actions/github-script@v6
         id: check-context
