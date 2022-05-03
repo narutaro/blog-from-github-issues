@@ -57,10 +57,10 @@ jobs:
         id: escape
         run: |
           html=${{steps.markdown-to-html.outputs.result}}
-          echo $html
+          echo "before: ${html}"
           html="${html//$'Table'/'TABLE'}"
-          html="${html//$'>\n<'/'>'\\n'<'}"
-          echo $html
+          html="${html//$'\n'/'@'}"
+          echo "after: ${html}"
           echo "::set-output name=html::$html"
           
       - name: Mustache
