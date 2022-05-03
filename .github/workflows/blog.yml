@@ -73,7 +73,7 @@ jobs:
        
       - name: Mustache
         run: |
-          cat post.html | ../mo/mo
+          cat post.html
         env:
           POST_HTML: "${{steps.escape.outputs.html}}"
       
