@@ -39,25 +39,13 @@ jobs:
             const { Octokit } = require("@octokit/rest");
             const octokit = new Octokit({});
             html = await octokit.request('POST /markdown', {"text": context.payload.issue.body, "mode": "gfm"})
-            // console.log(html)
             console.log(html.data)
             return html.data
-            // return console.log(html.data)
             
       - name: Show output
         run: |
           echo ${{steps.markdown-to-html.outputs.result}}
             
-      - uses: actions/checkout@v3
-        with:
-          repository: 'tests-always-included/mo'
-          path: 'mo'
-          
-      - name: Find after cheking out mo
-        run: |
-          pwd
-          find .
-      
       - name: Escape
         id: escape
         run: |
@@ -67,20 +55,25 @@ jobs:
           html="${html//$'>\\n<'/'><'}"
           echo "after: ${html}"
           echo "::set-output name=html::$html"
-       
+      
       - uses: actions/checkout@v3  
+      - id: checkout-this-repo
       - name: Read tamplate for post
-        run: cat post.html
-       
-      - name: Find after cheking out this repo
         run: |
-          pwd
-          find .
+          post-template=${cat post.html}
+          echo "::set-output name=post-template::$post-template"      
+       
+      - uses: actions/checkout@v3
+        with:
+          repository: 'tests-always-included/mo'
+          path: 'mo'
        
       - name: Mustache
         run: |
-          cat post.html
+          echo ${POST_TEMPLATE} | mo/mo
         env:
+          POST_TEMPLATE: "${{steps.checkout-this-repo.outputs.post-template}}"
           POST_HTML: "${{steps.escape.outputs.html}}"
+          
       
 
