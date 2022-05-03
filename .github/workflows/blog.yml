@@ -69,8 +69,7 @@ jobs:
    
       - name: Mustache
         run: |
-          cat post.html | mo/mo > ${{ github.event.issue.id }}.html
-          echo "File here:"
+          cat template/post.template.html | mo/mo > posts/${{ github.event.issue.id }}.html
           cat ${{ github.event.issue.id }}.html
         env:
           POST_HTML: "${{steps.escape.outputs.html}}"   
@@ -82,7 +81,7 @@ jobs:
           
       - name: Commit and push post
         run: |
-          git add ${{github.event.issue.id}}.html
+          git add posts/${{github.event.issue.id}}.html
           git commit -m "update" -a
           git pull
           git push origin main
