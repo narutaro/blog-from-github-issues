@@ -29,7 +29,7 @@ jobs:
             console.log(context)
             console.log(context.payload.issue.body)
             
-      - name: Install Octokit
+      - name: Install octokit
         run: npm install @octokit/rest
 
       - uses: actions/github-script@v6
@@ -44,32 +44,30 @@ jobs:
             return html.data
             // return console.log(html.data)
             
-      - name: show output
+      - name: Show output
         run: |
-          echo "LF="
-          echo $LF
-          echo "toJson"
-          echo ${{toJson(steps.markdown-to-html.outputs.result)}}
-          echo "as is"
           echo ${{steps.markdown-to-html.outputs.result}}
-          #echo "quote"
-          #echo "${{steps.markdown-to-html.outputs.result}}"
-
             
       - uses: actions/checkout@v3
         with:
           repository: 'tests-always-included/mo'
           path: 'mo'
-          
-      - name: mo test
+      
+      - name: Escape
+        id: escape
         run: |
-          echo ${{steps.markdown-to-html.outputs.result}}
+          html=${{steps.markdown-to-html.outputs.result}}
+          echo $html
+          html="${html//$'\n'/\\n}"
+          html="${html//$'\r'/\\r}"
+          echo $html
+          echo "::set-output name=html::$html"
+          
+      - name: Mustache
+        run: |
           echo "POST_HTML is {{REPO}}" | mo/mo
         env:
-          REPO: "${{steps.markdown-to-html.outputs.result}}"
-          #REPO: ${{steps.markdown-to-html.outputs.result}}
-          #REPO: "here"
-          #REPO: "<h1>Table of contents</h1>\n<ul>\n<li>x1</li>\n<li>y2</li>"
+          REPO: "${{steps.escape.outputs.html}}"
       
       - uses: actions/checkout@v3  
       - name: Read post.html
