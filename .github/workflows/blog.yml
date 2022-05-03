@@ -66,6 +66,11 @@ jobs:
         with:
           repository: 'tests-always-included/mo'
           path: 'mo'
+          
+      - name: Check files
+        run: |
+          pwd
+          find .
        
       - name: Mustache
         run: |
