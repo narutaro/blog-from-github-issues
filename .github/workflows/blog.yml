@@ -59,7 +59,7 @@ jobs:
           html=${{steps.markdown-to-html.outputs.result}}
           echo "before: ${html}"
           html="${html//$'Table'/'TABLE'}"
-          html="${html//$'>\\n *<'/''}"
+          html="${html//$'>\\n'/''}"
           echo "after: ${html}"
           echo "::set-output name=html::$html"
           
