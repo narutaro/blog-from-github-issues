@@ -19,12 +19,11 @@ jobs:
       - name: Escape
         id: escape-markdown
         run: |
-          markdown="${{github.event.issue.body}}"
-          markdown="${markdown//'%'/'%25'}"
-          markdown="${markdown//$'\n'/'%0A'}"
-          markdown="${markdown//$'\r'/'%0D'}"
-          echo ${markdown}
-          echo "::set-output name=escaped-markdown::$markdown"
+          md="${{github.event.issue.body}}"
+          md="${md//$'\n'/\\n}"
+          md="${md//$'\r'/\\r}"
+          echo ${md}
+          echo "::set-output name=emd::$md"
 
       - name: List all the issues in the repo
         run: |
@@ -36,7 +35,7 @@ jobs:
           curl -s \
             -X POST \
             -H "Accept: application/vnd.github.v3+json" \
-            https://api.github.com/markdown -d '{"text": "${{steps.escape-markdown.outputs.escaped-markdown}}", "mode": "gfm"}'
+            https://api.github.com/markdown -d '{"text": "${{steps.escape-markdown.outputs.emd}}", "mode": "gfm"}'
             
       - uses: actions/checkout@v3
         with:
