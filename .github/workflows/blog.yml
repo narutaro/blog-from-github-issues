@@ -59,7 +59,7 @@ jobs:
           html=${{steps.markdown-to-html.outputs.result}}
           echo $html
           html="${html//$'Table'/'TABLE'}"
-          html="${html//$'\n'/'\N'}"
+          html="${html//$\\n/'\N'}"
           echo $html
           echo "::set-output name=html::$html"
           
