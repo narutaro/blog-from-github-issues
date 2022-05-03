@@ -62,13 +62,16 @@ jobs:
           html="${html//$'>\\n<'/'><'}"
           echo "after: ${html}"
           echo "::set-output name=html::$html"
-          
+       
+      - uses: actions/checkout@v3  
+      - name: Read tamplate for post
+        run: cat post.html
+       
       - name: Mustache
         run: |
           echo "POST_HTML is {{REPO}}" | mo/mo
+          cat post.html | mo/mo
         env:
           REPO: "${{steps.escape.outputs.html}}"
       
-      - uses: actions/checkout@v3  
-      - name: Read post.html
-        run: cat post.html
+
