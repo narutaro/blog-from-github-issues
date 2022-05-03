@@ -45,9 +45,9 @@ jobs:
       - name: mo test
         run: |
           echo ${{steps.markdown-to-html.outputs.result}}
-          echo "POST_HTML is {{REPO}}" | mo/mo
+          echo "POST_HTML is {{POST_HTML}}" | mo/mo
         env:
-          REPO: "here"
+          POST_HTML: ${{steps.escape-markdown.outputs.emd}}
       
       - uses: actions/checkout@v3  
       - name: Read post.html
