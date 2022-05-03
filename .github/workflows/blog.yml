@@ -71,11 +71,17 @@ jobs:
         run: |
           pwd
           find .
-       
+   
       - name: Mustache
         run: |
-          echo ${POST_TEMPLATE} | mo/mo
+          cat post.html | mo/mo
         env:
-          POST_TEMPLATE: "${{steps.checkout-this-repo.outputs.post-template}}"
-          POST_HTML: "${{steps.escape.outputs.html}}"
+          POST_HTML: "${{steps.escape.outputs.html}}"   
+   
+#      - name: Mustache
+#        run: |
+#          echo ${POST_TEMPLATE} | mo/mo
+#        env:
+#          POST_TEMPLATE: "${{steps.checkout-this-repo.outputs.post-template}}"
+#          POST_HTML: "${{steps.escape.outputs.html}}"
           
