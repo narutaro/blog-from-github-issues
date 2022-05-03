@@ -70,7 +70,7 @@ jobs:
       - name: Mustache
         run: |
           cat template/post.template.html | mo/mo > posts/${{ github.event.issue.id }}.html
-          cat ${{ github.event.issue.id }}.html
+          cat posts/${{ github.event.issue.id }}.html
         env:
           POST_HTML: "${{steps.escape.outputs.html}}"   
    
