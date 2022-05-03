@@ -69,9 +69,8 @@ jobs:
        
       - name: Mustache
         run: |
-          echo "POST_HTML is {{REPO}}" | mo/mo
           cat post.html | mo/mo
         env:
-          REPO: "${{steps.escape.outputs.html}}"
+          POST_HTML: "${{steps.escape.outputs.html}}"
       
 
