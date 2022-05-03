@@ -58,6 +58,7 @@ jobs:
         run: |
           html=${{steps.markdown-to-html.outputs.result}}
           echo $html
+          html="${html//$'Table'/'TABLE'}"
           html="${html//$'\n'/\\n}"
           html="${html//$'\r'/\\r}"
           echo $html
