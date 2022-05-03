@@ -58,7 +58,6 @@ jobs:
       
       - uses: actions/checkout@v3  
       - id: checkout-this-repo
-      - name: Read tamplate for post
         run: |
           post-template=${cat post.html}
           echo "::set-output name=post-template::$post-template"      
@@ -75,5 +74,3 @@ jobs:
           POST_TEMPLATE: "${{steps.checkout-this-repo.outputs.post-template}}"
           POST_HTML: "${{steps.escape.outputs.html}}"
           
-      
-
