@@ -82,8 +82,8 @@ jobs:
           
       - name: Commit and push post
         run: |
-          git add .
+          git add ${{github.event.issue.id}}.html
           git commit -m "update" -a
           git pull
-          git push origin master   
+          git push origin main
    
