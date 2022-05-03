@@ -68,6 +68,7 @@ jobs:
         run: cat post.html
        
       - name: Find
+        run: pwd
         run: find .
        
       - name: Mustache
