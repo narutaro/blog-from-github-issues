@@ -16,6 +16,15 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
 
+      - name: Escape
+        id: escaped-markdown
+        run: |
+          markdown="${{github.event.issue.body}}"
+          markdown="${markdown//$'\n'/'%0A'}"
+          markdown="${markdown//$'\r'/'%0D'}"
+          markdown="${markdown//'%'/'%25'}"
+          echo markdown
+
       - name: List all the issues in the repo
         run: |
           echo "Issue URL: ${{ github.event.repository.id }}"
