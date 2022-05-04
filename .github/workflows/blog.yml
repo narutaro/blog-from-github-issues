@@ -33,14 +33,17 @@ jobs:
       # INDEX
       - name: Return issues
         uses: actions/github-script@v2
-        id: return_github_issues
+        id: list-github-issues
         with:
           script: |
-            issues = await github.issues.listForRepo({
+            return await github.issues.listForRepo({
               owner: context.repo.owner,
               repo: context.repo.repo
             })
-            console.log(issues)
+
+      - name: Show output
+        run: |
+          echo ${{steps.list-github-issues.outputs.result}}
 
       # POST
       - uses: actions/github-script@v6
