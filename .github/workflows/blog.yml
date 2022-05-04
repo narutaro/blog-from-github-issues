@@ -36,10 +36,11 @@ jobs:
         id: return_github_issues
         with:
           script: |
-            return github.issues.listForRepo({
+            issues = await github.issues.listForRepo({
               owner: context.repo.owner,
               repo: context.repo.repo
             })
+            console.log(issues)
 
       # POST
       - uses: actions/github-script@v6
