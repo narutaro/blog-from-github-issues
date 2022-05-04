@@ -31,19 +31,23 @@ jobs:
         run: npm install @octokit/rest
 
       # INDEX
-      - name: Return issues
+      - name: List issues
         uses: actions/github-script@v2
         id: list-github-issues
         with:
           script: |
-            return await github.issues.listForRepo({
+            issues = await github.issues.listForRepo({
               owner: context.repo.owner,
               repo: context.repo.repo
             })
+            issues
 
       - name: Show output
-        run: |
-          echo ${{steps.list-github-issues.outputs.result}}
+        uses: actions/github-script@v2
+        with:
+          script: |
+            issues = ${{steps.list-github-issues.outputs.result}}
+            console.log(issues)
 
       # POST
       - uses: actions/github-script@v6
