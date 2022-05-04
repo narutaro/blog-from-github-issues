@@ -50,7 +50,7 @@ jobs:
           html=${{steps.markdown-to-html.outputs.result}}
           echo "before: ${html}"
           html="${html//$'span>\\n'/'span><br>'}"
-          html="${html//$'>\\n<'/'><'}"
+          html="${html//$'>\\n'/'>'}"
           echo "after: ${html}"
           echo "::set-output name=html::$html"
       
@@ -70,7 +70,7 @@ jobs:
       - name: Mustache
         run: |
           cat template/post.template.html | mo/mo > posts/${{ github.event.issue.id }}.html
-          cat ${{ github.event.issue.id }}.html
+          cat posts/${{ github.event.issue.id }}.html
         env:
           POST_HTML: "${{steps.escape.outputs.html}}"   
    
