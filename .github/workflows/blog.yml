@@ -30,6 +30,18 @@ jobs:
       - name: Install octokit
         run: npm install @octokit/rest
 
+      # INDEX
+      - name: Return issues
+        uses: actions/github-script@v2
+        id: return_github_issues
+        with:
+          script: |
+            return github.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo
+            })
+
+      # POST
       - uses: actions/github-script@v6
         id: markdown-to-html
         with:
