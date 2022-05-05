@@ -35,7 +35,7 @@ jobs:
           npm install @octokit/rest
           npm install mustache
 
-      - name: List issues 
+      - name: Create index.html
         uses: actions/github-script@v6
         id: list-github-issues
         with:
@@ -105,7 +105,7 @@ jobs:
           
       - name: Commit and push post
         run: |
-          git add posts/${{github.event.issue.id}}.html
+          git add index.html posts/${{github.event.issue.id}}.html
           git commit -m "update" -a
           git pull
           git push origin main
