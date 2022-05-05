@@ -28,8 +28,7 @@ jobs:
             console.log(context.payload.issue.body)
             
       - name: Install octokit
-        run: npm install @octokit/rest
-        run: npm insatll mustache
+        run: npm install @octokit/rest mustache
 
       - name: List issues 
         uses: actions/github-script@v6
