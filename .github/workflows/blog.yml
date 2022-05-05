@@ -29,8 +29,8 @@ jobs:
             
       - name: Install octokit
         run: npm install @octokit/rest
-	run: npm insatll mustache
-	
+        run: npm insatll mustache
+
       - name: List issues 
         uses: actions/github-script@v6
         id: list-github-issues
