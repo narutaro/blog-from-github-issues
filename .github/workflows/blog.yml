@@ -45,7 +45,7 @@ jobs:
 	      owner: context.repo.owner,
               repo: context.repo.repo
             })
-	    .then(issues => {
+            .then(issues => {
               const template = fs.readFileSync("index.template.html", "utf8").toString();
               let html = Mustache.render(template, issues);
               console.log(html);
