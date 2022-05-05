@@ -30,6 +30,9 @@ jobs:
       - name: Install octokit
         run: npm install @octokit/rest mustache
 
+      - uses: actions/checkout@v3
+        id: checkout-this-repo
+
       - name: List issues 
         uses: actions/github-script@v6
         id: list-github-issues
@@ -82,9 +85,6 @@ jobs:
           html="${html//$'>\\n'/'>'}"
           echo "after: ${html}"
           echo "::set-output name=html::$html"
-      
-      - uses: actions/checkout@v3
-        id: checkout-this-repo  
        
       - uses: actions/checkout@v3
         with:
