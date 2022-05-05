@@ -31,7 +31,7 @@ jobs:
         run: npm install @octokit/rest
 	run: npm insatll mustache
 	
-      - name: List issues
+      - name: List issues 
         uses: actions/github-script@v6
         id: list-github-issues
         with:
