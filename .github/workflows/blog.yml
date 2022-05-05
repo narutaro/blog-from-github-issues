@@ -26,12 +26,14 @@ jobs:
           script: |
             console.log(context)
             console.log(context.payload.issue.body)
-            
-      - name: Install octokit
-        run: npm install @octokit/rest mustache
 
       - uses: actions/checkout@v3
         id: checkout-this-repo
+
+      - name: Install octokit
+        run: |
+          npm install @octokit/rest
+          npm install mustache
 
       - name: List issues 
         uses: actions/github-script@v6
