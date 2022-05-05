@@ -56,13 +56,6 @@ jobs:
               fs.appendFileSync("index.html", html);
             });
 
-      - name: Show output
-        uses: actions/github-script@v2
-        with:
-          script: |
-            issues = ${{steps.list-github-issues.outputs.result}}
-            console.log(issues)
-
       # POST
       - uses: actions/github-script@v6
         id: markdown-to-html
