@@ -50,6 +50,7 @@ jobs:
               repo: context.repo.repo
             })
             .then(issues => {
+              console.log(issues);
               const template = fs.readFileSync("template/index.template.html", "utf8").toString();
               let html = Mustache.render(template, issues);
               console.log(html);
