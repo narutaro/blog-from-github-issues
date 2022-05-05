@@ -42,7 +42,7 @@ jobs:
             const fs = require("fs");
 
             octokit.rest.issues.listForRepo({
-	      owner: context.repo.owner,
+              owner: context.repo.owner,
               repo: context.repo.repo
             })
             .then(issues => {
