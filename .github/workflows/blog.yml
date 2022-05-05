@@ -29,8 +29,8 @@ jobs:
             
       - name: Install octokit
         run: npm install @octokit/rest
-
-      # INDEX
+	run: npm insatll mustache
+	
       - name: List issues
         uses: actions/github-script@v6
         id: list-github-issues
@@ -44,11 +44,12 @@ jobs:
             octokit.rest.issues.listForRepo({
               owner: context.repo.owner,
               repo: context.repo.repo
-            }).then(issues => {
-	            const template = fs.readFileSync("index.template.html", "utf8").toString();
-	            let html = Mustache.render(template, issues)
-	            console.log(html)
-	            fs.appendFileSync("index.html", html);
+            })
+	    .then(issues => {
+	      const template = fs.readFileSync("index.template.html", "utf8").toString();
+	      let html = Mustache.render(template, issues);
+	      console.log(html);
+	      fs.appendFileSync("index.html", html);
             });
 
       - name: Show output
