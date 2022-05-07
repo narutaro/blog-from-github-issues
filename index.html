@@ -27,19 +27,19 @@
 	-->
 </head>
 
-<body>
+<body class="markdown-body">
 
   <!-- Add your site or application content here -->
+<h1>narutato / blog</h1>
 
-<ul>
-  <li><a href="posts/1224829200.html">Embedded Tweet</a></li>
-  <li><a href="posts/1222059689.html">Various markdown 3</a></li>
-  <li><a href="posts/1221768777.html">Issue C7</a></li>
-  <li><a href="posts/1221767652.html">Issue B2</a></li>
-  <li><a href="posts/1221756104.html">Issue A</a></li>
-  <li><a href="posts/1209430506.html">mermaid</a></li>
-  <li><a href="posts/1198469728.html">今どこ？</a></li>
-</ul>
+<h1 class="issue-title">Connecting Svelte front-end to AWS back-end</h1>
+<p class="issue-label">your name | Apr 7, 2021 | 7 min read</p>
+
+<h1 class="issue-title">Query to Search for an Item with Apollo</h1>
+<p class="issue-label">your name | Apr 4, 2021 | 10 min read</p>
+
+<h1 class="issue-title">The way you enjoy Amplify with Ruby</h1>
+<p class="issue-label">your name · Apr 1, 2021 · 7 min read <img src="https://camo.githubusercontent.com/8733716e2fd7444a0f383a9e5f43779a016bae35ddde4e1cc32a4f90bd9bb775/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f76657273696f6e2d312e322e332d626c7565" alt="version" data-canonical-src="https://img.shields.io/badge/version-1.2.3-blue" style="max-width: 100%;"></p>
 
   <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
   <script>
@@ -67,7 +67,18 @@
 			padding: 15px;
 		}
 	}
+
+	.markdown-body .issue-title {
+		margin-bottom: 0px;
+    border-bottom-width: 0px;
+    padding-bottom: 0px;
+	}
+
+	.markdown-body .issue-label {
+    margin-left: 5px;
+  }
 </style>
-<article class="markdown-body">
-  
-</article>
+
+<!--
+<article class="markdown-body"></article>
+-->
