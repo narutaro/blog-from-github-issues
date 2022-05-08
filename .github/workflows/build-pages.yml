@@ -35,7 +35,7 @@ jobs:
             console.log(process.env)
             
       - name: Build pages
-        run: node src/bp.js
+        run: node src/build-pages.js
 
       - name: Git setting
         run: |
