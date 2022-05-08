@@ -19,6 +19,9 @@ const context = {
 }
 */
 
+console.log(context)
+
+/*
 octokit.rest.issues.listForRepo({
 	owner: context.repo.owner,
 	repo: context.repo.repo,
@@ -44,3 +47,4 @@ octokit.rest.issues.listForRepo({
 	})
 
 });
+*/
