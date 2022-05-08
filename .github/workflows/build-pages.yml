@@ -7,28 +7,17 @@ jobs:
   get-issues:
     runs-on: ubuntu-latest
     steps:
-      - name: View key params
-        uses: actions/github-script@v6
-        with:
-          script: |
-            console.log(context.repo.owner)
-        
-      - name: View the target issue information
-        run: |
-          echo "repo: ${{ github.repository }}"
-          echo "workspace: $GITHUB_WORKSPACE"
-          echo "repo id: ${{ github.event.repository.id }}"
-          echo "issue url: ${{ github.event.repository.issues_url }}"
-          echo "issue id: ${{ github.event.issue.id }}" 
-
-      - name: View $GITHUB_CONTEXT
-        run: echo "$GITHUB_CONTEXT"
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-
       - name: View github-script context
         uses: actions/github-script@v6
         with:
-          script: |
-            console.log(context)
+          script: console.log(context)
+
+      - name: Checkout blog repo
+        uses: actions/checkout@v3
+
+      - name: Install Octokit and Mustache
+        run: npm install @octokit/rest mustache
+
+      - name: Build pages
+        run: node src/build-pages.js
    
