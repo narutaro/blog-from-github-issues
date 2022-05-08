@@ -7,6 +7,12 @@ jobs:
   get-issues:
     runs-on: ubuntu-latest
     steps:
+      - name: View key params
+        uses: actions/github-script@v6
+        with:
+          script: |
+            console.log(context.repo.owner)
+        
       - name: View the target issue information
         run: |
           echo "repo: ${{ github.repository }}"
