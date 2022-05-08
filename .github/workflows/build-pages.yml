@@ -4,9 +4,9 @@ on:
     types: [opened, edited]
 
 env:
-  owner: context.repo.owner
-  repo: context.repo.repo
-  target_issue_id: context.payload.issue.id
+  owner: ${{context.repo.owner}}
+  repo: ${{context.repo.repo}}
+  target_issue_id: ${{context.payload.issue.id}}
 
 jobs:
   build-pages:
