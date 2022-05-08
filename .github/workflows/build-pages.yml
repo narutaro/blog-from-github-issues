@@ -12,6 +12,11 @@ jobs:
   build-pages:
     runs-on: ubuntu-latest
     steps:
+      - name: View the github context
+        run: echo "$GITHUB_CONTEXT"
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+          
       - name: View github-script context
         uses: actions/github-script@v6
         with:
