@@ -20,4 +20,6 @@ jobs:
 
       - name: Build pages
         run: node src/build-pages.js
+        env: 
+          context: context
    
