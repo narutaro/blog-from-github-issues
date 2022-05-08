@@ -4,8 +4,8 @@ on:
     types: [opened, edited]
 
 env:
-  owner: ${{github.repository_owner}}
-  repo: ${{github.repository.name}}
+  owner: ${{github.event.repository_owner}}
+  repo: ${{github.event.repository.name}}
   target_issue_id: ${{github.issue.id}}
 
 jobs:
