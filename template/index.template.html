@@ -31,9 +31,10 @@
 
   <!-- Add your site or application content here -->
 
+<h1 class="issue-title">Create a static site generator with Github Actions</h1>
 
 {{#data}}
-<h1 class="issue-title"><a href="posts/{{id}}.html">{{title}}</a></h1>
+<h2 class="issue-title"><a class="no-decoration" href="posts/{{id}}.html">{{title}}</a></h2>
 <p class="issue-label">your name · Apr 1, 2021 · 7 min read <img src="https://camo.githubusercontent.com/8733716e2fd7444a0f383a9e5f43779a016bae35ddde4e1cc32a4f90bd9bb775/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f76657273696f6e2d312e322e332d626c7565" alt="version" data-canonical-src="https://img.shields.io/badge/version-1.2.3-blue" style="max-width: 100%;"></p>
 
 {{/data}}
@@ -64,6 +65,7 @@
 			padding: 15px;
 		}
 	}
+
 	.markdown-body .issue-title {
     margin-bottom: 0px;
     border-bottom-width: 0px;
@@ -72,6 +74,10 @@
 
   .markdown-body .issue-label {
     margin-left: 5px;
+  }
+
+  .markdown-body .no-decoration {
+		text-decoration: none;
   }
 </style>
 
