@@ -22,6 +22,11 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
+            const { Octokit } = require("@octokit/rest");
+            const octokit = new Octokit({});
+            const Mustache = require('mustache');
+            const fs = require("fs");
+            
             octokit.rest.issues.listForRepo({
               owner: context.repo.owner,
               repo: context.repo.repo,
