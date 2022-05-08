@@ -4,9 +4,9 @@ on:
     types: [opened, edited]
 
 env:
-  owner: a
-  repo: b
-  target_issue_id: c
+  owner: ${{github.repository_owner}}
+  repo: ${{github.repository.name}}
+  target_issue_id: ${{github.issue.id}}
 
 jobs:
   build-pages:
