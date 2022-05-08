@@ -4,17 +4,19 @@ const Mustache = require('mustache');
 const fs = require("fs");
 
 
-/* Past these on your shell before you run locally
+// Past these on your shell before you run locally
 export owner=narutaro
 export repo=blog
 export target_issue_id=1198469728
-*/
 
+// Build
 octokit.rest.issues.listForRepo({
 	owner: process.env.owner,
 	repo: process.env.repo,
 })
 .then(issues => {
+
+	console.log(issues)
 
 	// Build index
 	const index_template = fs.readFileSync("template/index.template.html", "utf8").toString();
