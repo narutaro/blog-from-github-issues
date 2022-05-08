@@ -21,10 +21,11 @@ const context = {
 
 console.log(context)
 
-/*
 octokit.rest.issues.listForRepo({
-	owner: context.repo.owner,
-	repo: context.repo.repo,
+	//owner: context.repo.owner,
+	//repo: context.repo.repo,
+	owner: process.env.owner,
+	repo: process.env.repo,
 })
 .then(issues => {
 
@@ -35,7 +36,7 @@ octokit.rest.issues.listForRepo({
 
 	// Build post
 	target_issue = issues.data.filter((ti) => {
-		return ti.id == context.payload.issue.id
+		return ti.id == process.env.target_issue_id
 	});
 
 	markdown = target_issue[0].body
@@ -43,8 +44,7 @@ octokit.rest.issues.listForRepo({
   octokit.rest.markdown.render({"text": markdown, "mode": "gfm"})
 	.then(issue_html => {
 		const issue_page = Mustache.render(issue_template, issue_html)
-	  fs.writeFileSync("posts/" + context.payload.issue.id + ".html", issue_page, "utf8");
+	  fs.writeFileSync("posts/" + process.env.target_issue_id + ".html", issue_page, "utf8");
 	})
 
 });
-*/
