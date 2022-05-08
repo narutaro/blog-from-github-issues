@@ -4,24 +4,13 @@ const Mustache = require('mustache');
 const fs = require("fs");
 
 
-// context for running local
-/*
-const context = {
-	repo: {
-		owner: 'narutaro',
-		repo: 'blog'
-	},
-	payload: {
-		issue: {
-			id: 1221768777
-		}
-	}
-}
+/* Past these on your shell before you run locally
+export owner=narutaro
+export repo=blog
+export target_issue_id=1198469728
 */
 
 octokit.rest.issues.listForRepo({
-	//owner: context.repo.owner,
-	//repo: context.repo.repo,
 	owner: process.env.owner,
 	repo: process.env.repo,
 })
