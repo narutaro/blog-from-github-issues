@@ -1,0 +1,78 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+
+  <!-- Github flavored CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown.min.css">
+
+	<!--
+  <meta name="theme-color" content="#fafafa">
+	-->
+</head>
+
+<body class="markdown-body">
+
+	<!--  three brakets print HTML as is -->
+	<h1>Thingを作る</h1>
+<p>二つのThing - <code class="notranslate">s1</code>と<code class="notranslate">s2</code>をつくる</p>
+<div class="highlight highlight-source-shell"><pre>% aws iot create-thing --thing-name s1
+{
+    <span class="pl-s"><span class="pl-pds">"</span>thingName<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>s1<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>thingArn<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>arn:aws:iot:ap-northeast-1:533718670665:thing/s1<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>thingId<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>f244d339-0a9a-4407-be76-757e40da0acd<span class="pl-pds">"</span></span>
+}
+% aws iot create-thing --thing-name s2
+{
+    <span class="pl-s"><span class="pl-pds">"</span>thingName<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>s2<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>thingArn<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>arn:aws:iot:ap-northeast-1:533718670665:thing/s2<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>thingId<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>a48971d4-423f-4b66-aee1-ac63daae3892<span class="pl-pds">"</span></span>
+}</pre></div>
+<p>確認する</p>
+<pre class="notranslate"><code class="notranslate">aws iot list-things
+</code></pre>
+<h1>キー関係を取得してそれぞれのディレクトリへ置く</h1>
+<pre class="notranslate"><code class="notranslate">% mkdir s1    
+% mkdir s2
+</code></pre>
+
+  <script>
+    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+    ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
+  </script>
+  <script src="https://www.google-analytics.com/analytics.js" async></script>
+</body>
+
+</html>
+
+<style>
+	.markdown-body {
+		box-sizing: border-box;
+		min-width: 200px;
+		max-width: 980px;
+		margin: 0 auto;
+		padding: 45px;
+	}
+
+	@media (max-width: 767px) {
+		.markdown-body {
+			padding: 15px;
+		}
+	}
+</style>
