@@ -17,6 +17,8 @@ octokit.rest.issues.listForRepo({
 })
 .then(issues => {
 
+	issues.owner = process.env.owner
+	issues.repo = process.env.repo
 	console.log(issues)
 
 	// Build index
