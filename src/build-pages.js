@@ -19,7 +19,7 @@ octokit.rest.issues.listForRepo({
 
 	issues.owner = process.env.owner
 	issues.repo = process.env.repo
-	console.log(issues)
+	//console.log(issues)
 
 	// Build index
 	const index_template = fs.readFileSync("template/index.template.html", "utf8").toString();
@@ -30,12 +30,19 @@ octokit.rest.issues.listForRepo({
 	target_issue = issues.data.filter((ti) => {
 		return ti.id == process.env.target_issue_id
 	});
+	target_issue = target_issue[0]
 
-	markdown = target_issue[0].body
+	markdown = target_issue.body
 	const issue_template = fs.readFileSync("template/post.template.html", "utf8").toString();
   octokit.rest.markdown.render({"text": markdown, "mode": "gfm"})
 	.then(issue_html => {
-		const issue_page = Mustache.render(issue_template, issue_html)
+
+		target_issue.issue_html = issue_html
+		console.log(target_issue)
+
+		const issue_page = Mustache.render(issue_template, target_issue)
+		console.log('-----------------------------')
+		console.log(issue_page)
 	  fs.writeFileSync("posts/" + process.env.target_issue_id + ".html", issue_page, "utf8");
 	})
 

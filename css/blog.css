@@ -1,0 +1,20 @@
+.markdown-body .issue-list {
+	margin-bottom: 0px;
+	border-bottom-width: 0px;
+	padding-bottom: 0px;
+}
+
+.markdown-body .issue-title {
+	margin-bottom: 64px;
+	border-bottom-width: 0px;
+	padding-bottom: 0px;
+	font-size: 3em;
+}
+
+.markdown-body .issue-label {
+	margin-left: 5px;
+}
+
+.markdown-body .no-decoration {
+	text-decoration: none;
+}
