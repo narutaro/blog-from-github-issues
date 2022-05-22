@@ -15,12 +15,12 @@
 .issue-list-second-line {
 	color: gray
 }
-/*
-.markdown-body .issue-label {
-	margin-left: 5px;
-}
-*/
 
 .markdown-body .no-decoration {
 	text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark)
+.markdown-body {
+	--color-accent-fg: initial;
 }
