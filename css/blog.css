@@ -24,3 +24,8 @@
 .markdown-body {
 	--color-accent-fg: initial;
 }
+
+@media (prefers-color-scheme: light)
+.markdown-body {
+	--color-accent-fg: initial;
+}
