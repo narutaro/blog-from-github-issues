@@ -3,6 +3,9 @@ const octokit = new Octokit({});
 const Mustache = require('mustache');
 const fs = require("fs");
 
+const df = require("./date-format.js")
+//sd = df.shortDate("2022-09-21T06:34:38Z")
+
 
 /* Past these on your shell before you run locally
 export owner=narutaro
@@ -19,7 +22,10 @@ octokit.rest.issues.listForRepo({
 
 	issues.owner = process.env.owner
 	issues.repo = process.env.repo
-	//console.log(issues)
+
+	// Format issue object
+	issues.data.map(issue => issue.updated_at_short = df.shortDate(issue.updated_at))
+	console.log("issues: ", issues)
 
 	// Build index
 	const index_template = fs.readFileSync("template/index.template.html", "utf8").toString();
@@ -38,7 +44,7 @@ octokit.rest.issues.listForRepo({
 	.then(issue_html => {
 
 		target_issue.issue_html = issue_html
-		console.log(target_issue)
+		console.log("target_issue: ", target_issue)
 
 		const issue_page = Mustache.render(issue_template, target_issue)
 		console.log('-----------------------------')
