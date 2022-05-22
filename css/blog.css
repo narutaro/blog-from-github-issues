@@ -12,6 +12,9 @@
 	font-weight: 800;
 }
 
+.issue-list-second-line {
+	color: gray
+}
 /*
 .markdown-body .issue-label {
 	margin-left: 5px;
