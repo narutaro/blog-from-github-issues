@@ -20,6 +20,11 @@
 	text-decoration: none;
 }
 
+.markdown-body {
+	--color-accent-fg: initial;
+}
+
+/*
 @media (prefers-color-scheme: dark)
 .markdown-body {
 	--color-accent-fg: initial;
@@ -29,3 +34,4 @@
 .markdown-body {
 	--color-accent-fg: initial;
 }
+*/
