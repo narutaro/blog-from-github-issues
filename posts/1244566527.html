@@ -35,7 +35,7 @@
 	<h1 class="issue-title">MQTT 5.0 - Message Delivery Retry</h1>
 
 	<!--  three brakets print HTML as is -->
-	<p>According to <a href="https://docs.oasis-open.org/mqtt/mqtt/v5.0/mqtt-v5.0.html" rel="nofollow">OASIS MQTT5.0 Spec</a></p>
+	<p>I was looking at the <a href="https://docs.oasis-open.org/mqtt/mqtt/v5.0/mqtt-v5.0.html" rel="nofollow">OASIS MQTT5.0 Spec</a> and the message delivery retry part was a bit confusing to me.</p>
 <blockquote>
 <p>4.4 Message delivery retry<br>
 When a Client reconnects with Clean Start set to 0 and a session is present, both the Client and Server MUST resend any unacknowledged PUBLISH packets (where QoS &gt; 0) and PUBREL packets using their original Packet Identifiers. This is the only circumstance where a Client or Server is REQUIRED to resend messages. Clients and Servers MUST NOT resend messages at any other time [MQTT-4.4.0-1].</p>
@@ -55,6 +55,12 @@ MQTT clients use standing TCP (or similar protocols with the same guarantees) co
 <blockquote>
 <p>In case you rely on retransmission packets in your use case (e.g. because your implementation does not acknowledge packets in certain cases), we suggest reconsidering this decision before upgrading to MQTT v5.</p>
 </blockquote>
+<p>Okay, so It basically says that "just rely on TCP retransmit".</p>
+<ul>
+<li><strong>MQTT 3.1.1 allowed the re-delivery of MQTT messages while the TCP connection is healthy. In practice, this is a very bad idea, since overloaded MQTT clients may get overloaded even more.</strong></li>
+<li>** With MQTT 5, brokers and clients are not allowed to retransmit MQTT messages for healthy TCP connections. **</li>
+</ul>
+<p>Cheers,</p>
 
   <script>
     window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
