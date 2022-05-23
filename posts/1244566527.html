@@ -58,7 +58,7 @@ MQTT clients use standing TCP (or similar protocols with the same guarantees) co
 <p>Okay, so It basically says that "just rely on TCP retransmit".</p>
 <ul>
 <li><strong>MQTT 3.1.1 allowed the re-delivery of MQTT messages while the TCP connection is healthy. In practice, this is a very bad idea, since overloaded MQTT clients may get overloaded even more.</strong></li>
-<li>** With MQTT 5, brokers and clients are not allowed to retransmit MQTT messages for healthy TCP connections. **</li>
+<li><strong>With MQTT 5, brokers and clients are not allowed to retransmit MQTT messages for healthy TCP connections.</strong></li>
 </ul>
 <p>Cheers,</p>
 
