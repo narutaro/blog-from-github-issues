@@ -40,7 +40,7 @@
 <p>4.4 Message delivery retry<br>
 When a Client reconnects with Clean Start set to 0 and a session is present, both the Client and Server MUST resend any unacknowledged PUBLISH packets (where QoS &gt; 0) and PUBREL packets using their original Packet Identifiers. This is the only circumstance where a Client or Server is REQUIRED to resend messages. Clients and Servers MUST NOT resend messages at any other time [MQTT-4.4.0-1].</p>
 </blockquote>
-<p>It sounds that you can NOT retry in a normal state and only try when reconnecting with a certain flags... then how can you make sure QoS1 - at least once?</p>
+<p>It sounds that you can NOT retry in a normal state and only do it when reconnecting with a certain flags... then how can you make sure QoS1 - at least once?</p>
 <p>HiveMQ <a href="https://www.hivemq.com/blog/mqtt5-essentials-part2-foundational-changes-in-the-protocol/" rel="nofollow">describes</a> related things:</p>
 <blockquote>
 <p>No retry for QoS 1 and 2 messages<br>
