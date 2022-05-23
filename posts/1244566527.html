@@ -41,14 +41,20 @@
 When a Client reconnects with Clean Start set to 0 and a session is present, both the Client and Server MUST resend any unacknowledged PUBLISH packets (where QoS &gt; 0) and PUBREL packets using their original Packet Identifiers. This is the only circumstance where a Client or Server is REQUIRED to resend messages. Clients and Servers MUST NOT resend messages at any other time [MQTT-4.4.0-1].</p>
 </blockquote>
 <p>It sounds that you can NOT retry in a normal state and only try when reconnecting with a certain flags... then how can you make sure QoS1 - at least once?</p>
-<p>HiveMQ describes related things:</p>
+<p>HiveMQ <a href="https://www.hivemq.com/blog/mqtt5-essentials-part2-foundational-changes-in-the-protocol/" rel="nofollow">describes</a> related things:</p>
 <blockquote>
 <p>No retry for QoS 1 and 2 messages<br>
 MQTT clients use standing TCP (or similar protocols with the same guarantees) connections as underlying transport. A healthy TCP connection gives bi-directional connectivity with exactly-once and in-order guarantees, so all MQTT packets sent by clients or brokers will arrive on the other end. In case the TCP connection breaks, while the message is in-flight, <a href="https://www.hivemq.com/blog/mqtt-essentials-part-6-mqtt-quality-of-service-levels" rel="nofollow">QoS 1 and 2</a> give message delivery guarantees over multiple TCP connections.</p>
 </blockquote>
+<blockquote>
 <p>MQTT 3.1.1 allowed the re-delivery of MQTT messages while the TCP connection is healthy. In practice, this is a very bad idea, since overloaded MQTT clients may get overloaded even more. Just imagine a case where a MQTT client receives a message from a MQTT broker and needs 11 seconds to process the message (and would acknowledge the packet after the processing). Now imagine the broker would retransmit the message after a 10 second timeout. There is no advantage to this approach and it just uses precious bandwidth and overloads the MQTT client even more.</p>
+</blockquote>
+<blockquote>
 <p>With MQTT 5, brokers and clients are not allowed to retransmit MQTT messages for healthy TCP connections. The brokers and clients must re-send unacknowledged packets when the TCP connection was closed, though. So the QoS 1 and 2 guarantees are as important as with MQTT 3.1.1.</p>
+</blockquote>
+<blockquote>
 <p>In case you rely on retransmission packets in your use case (e.g. because your implementation does not acknowledge packets in certain cases), we suggest reconsidering this decision before upgrading to MQTT v5.</p>
+</blockquote>
 
   <script>
     window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
