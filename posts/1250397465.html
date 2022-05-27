@@ -38,8 +38,12 @@
 	<h1>Create a large file</h1>
 <div class="highlight highlight-source-shell"><pre>base64 /dev/urandom <span class="pl-k">|</span> head -c 128000</pre></div>
 <h1><code class="notranslate">tail -f</code> for AWS CloudWatch logs</h1>
+<p><strong>Lambda:</strong></p>
 <div class="highlight highlight-source-shell"><pre>aws logs tail --follow /aws</pre></div>
 <p>You don't have to put full log group name. Just hit <code class="notranslate">tab</code> after <code class="notranslate">/aws</code> to complement the rest.</p>
+<p><strong>IoT Core:</strong></p>
+<pre class="notranslate"><code class="notranslate">aws logs tail --follow AWSIotLogsV2
+</code></pre>
 
   <script>
     window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
