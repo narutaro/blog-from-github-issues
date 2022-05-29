@@ -25,6 +25,9 @@
 	<!-- User CSS -->
   <link rel="stylesheet" href="/blog/css/blog.css">
 
+  <!-- Fontawsome -->
+	<script src="https://kit.fontawesome.com/a1763a7d6f.js" crossorigin="anonymous"></script>
+
 	<!--
   <meta name="theme-color" content="#fafafa">
 	-->
@@ -32,7 +35,14 @@
 
 <body class="markdown-body">
 
-	<h1 class="issue-title">Tool Box</h1>
+	<div style="margin-bottom: 64px";>
+	<h1 style="font-weight: 900;">TOOL BOX
+		<span style="float: right; --color-accent-fg: initial">
+			<a href="https:&#x2F;&#x2F;github.com&#x2F;narutaro&#x2F;blog&#x2F;issues&#x2F;19"><i class="fa-solid fa-gear"></i></a>
+		</span>
+	</h1>
+	  <i class="fa-regular fa-calendar-days"></i> May 29th, 2022
+	</div>
 
 	<!--  three brakets print HTML as is -->
 	<h1>Local web server</h1>
@@ -47,11 +57,17 @@
 <pre class="notranslate"><code class="notranslate">aws logs tail --follow AWSIotLogsV2
 </code></pre>
 
-  <script>
-    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
-    ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
-  </script>
-  <script src="https://www.google-analytics.com/analytics.js" async></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y0XWZZ2L8J"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Y0XWZZ2L8J');
+</script>
+
 </body>
 
 </html>
