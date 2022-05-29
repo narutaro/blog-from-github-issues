@@ -25,6 +25,9 @@
 	<!-- User CSS -->
   <link rel="stylesheet" href="/blog/css/blog.css">
 
+  <!-- Fontawsome -->
+	<script src="https://kit.fontawesome.com/a1763a7d6f.js" crossorigin="anonymous"></script>
+
 	<!--
   <meta name="theme-color" content="#fafafa">
 	-->
@@ -32,7 +35,14 @@
 
 <body class="markdown-body">
 
-	<h1 class="issue-title">{{title}}</h1>
+	<span style="margin-bottom: 48px";>
+	<h1 style="font-weight: 900;">{{title}}</h1>
+		{{#labels}}
+			<span style="margin-left: 0.5em;">
+				<i class="fa-solid fa-tag"></i> {{name}}
+			</span>
+		{{/labels}}
+	</span>
 
 	<!-- {{{}}} three brakets print HTML as is -->
 	{{{issue_html.data}}}

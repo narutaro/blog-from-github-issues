@@ -1,27 +1,5 @@
-.markdown-body .issue-list {
-	margin-bottom: 0px;
-	border-bottom-width: 0px;
-	padding-bottom: 0px;
-}
-
-.markdown-body .issue-title {
-	margin-bottom: 64px;
-	border-bottom-width: 0px;
-	padding-bottom: 0px;
-	font-size: 3em;
-	font-weight: 800;
-}
-
-.issue-list-second-line {
-	color: gray
-}
-
-.markdown-body .no-decoration {
-	text-decoration: none;
-}
-
 .markdown-body {
-	--color-accent-fg: initial;
+	--color-accent-fg: #ff6699; 
 }
 
 /*
