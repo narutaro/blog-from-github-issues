@@ -35,12 +35,12 @@
 
 <body class="markdown-body">
 
-	<span style="margin-bottom: 48px";>
-	<h1 style="font-weight: 900;">MQTT 5.0 - Message Delivery Retry</h1>
+	<div style="margin-bottom: 64px";>
+	<h1 style="font-weight: 900;">MQTT5.0 - Message Delivery Retry</h1>
 			<span style="margin-left: 0.5em;">
 				<i class="fa-solid fa-tag"></i> mqtt
 			</span>
-	</span>
+	</div>
 
 	<!--  three brakets print HTML as is -->
 	<h1>Changes for the message delivery retry in MQTT5.0</h1>
@@ -64,7 +64,7 @@ MQTT clients use standing TCP (or similar protocols with the same guarantees) co
 <blockquote>
 <p>In case you rely on retransmission packets in your use case (e.g. because your implementation does not acknowledge packets in certain cases), we suggest reconsidering this decision before upgrading to MQTT v5.</p>
 </blockquote>
-<p>Okay, so It basically says that "just rely on TCP retransmit".</p>
+<p>Okay, so it basically says that "just rely on TCP retransmit".</p>
 <ul>
 <li><strong>MQTT 3.1.1 allowed the re-delivery of MQTT messages while the TCP connection is healthy. In practice, this is a very bad idea, since overloaded MQTT clients may get overloaded even more.</strong></li>
 <li><strong>With MQTT 5, brokers and clients are not allowed to retransmit MQTT messages for healthy TCP connections.</strong></li>
