@@ -49,11 +49,12 @@
 <div class="highlight highlight-source-shell"><pre>python3 -m http.server --bind 192.168.68.104</pre></div>
 <h1>Create a large file</h1>
 <div class="highlight highlight-source-shell"><pre>base64 /dev/urandom <span class="pl-k">|</span> head -c 128000</pre></div>
-<h1><code class="notranslate">tail -f</code> for AWS CloudWatch logs</h1>
-<h2>Lambda</h2>
+<h1>Cloudwatch logs</h1>
+<p>You can <code class="notranslate">tail -f</code> for the Amazon CloudWatch logs.</p>
+<h2>Lambda logs</h2>
 <div class="highlight highlight-source-shell"><pre>aws logs tail --follow /aws</pre></div>
-<p>You don't have to put full log group name. Just hit <code class="notranslate">tab</code> after <code class="notranslate">/aws</code> to complement the rest.</p>
-<h2>IoT Core</h2>
+<p>You don't have to put full <strong>log group name</strong>. Just hit <code class="notranslate">tab</code> after <code class="notranslate">/aws</code> to complement the rest.</p>
+<h2>IoT Core logs</h2>
 <pre class="notranslate"><code class="notranslate">aws logs tail --follow AWSIotLogsV2
 </code></pre>
 
