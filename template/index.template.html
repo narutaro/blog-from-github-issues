@@ -43,11 +43,13 @@
 <h2 class="issue-list"><a class="no-decoration" href="posts/{{id}}.html">{{title}}</a></h2>
 
 <span class="issue-list-second-line">
-	<span><i class="fa-regular fa-calendar-days"></i></span><span style="margin-left: 0.8em;">{{updated_at_short}}</span>
-	<span style="margin-left: 1.5em;"><i class="fa-regular fa-tag"></i>
-	<span style="margin-left: 0.8em;">
+	<i class="fa-regular fa-calendar-days"></i>
+	<span>{{updated_at_short}}</span>
 	{{#labels}}
-		<code>{{name}}</code>
+	<!-- <code>{{name}}</code> -->
+		<span style="margin-left: 0.5em;">
+			<i class="fa-solid fa-tag"></i> {{name}}
+		</span>
 	{{/labels}}
 	</span>
 </span>
