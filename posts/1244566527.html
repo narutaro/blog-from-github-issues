@@ -25,6 +25,9 @@
 	<!-- User CSS -->
   <link rel="stylesheet" href="/blog/css/blog.css">
 
+  <!-- Fontawsome -->
+	<script src="https://kit.fontawesome.com/a1763a7d6f.js" crossorigin="anonymous"></script>
+
 	<!--
   <meta name="theme-color" content="#fafafa">
 	-->
@@ -32,10 +35,16 @@
 
 <body class="markdown-body">
 
-	<h1 class="issue-title">MQTT 5.0 - Message Delivery Retry</h1>
+	<span style="margin-bottom: 48px";>
+	<h1 style="font-weight: 900;">MQTT 5.0 - Message Delivery Retry</h1>
+			<span style="margin-left: 0.5em;">
+				<i class="fa-solid fa-tag"></i> mqtt
+			</span>
+	</span>
 
 	<!--  three brakets print HTML as is -->
-	<p>I was looking at the <a href="https://docs.oasis-open.org/mqtt/mqtt/v5.0/mqtt-v5.0.html" rel="nofollow">OASIS MQTT5.0 Spec</a> and the message delivery retry part was a bit confusing to me.</p>
+	<h1>Changes for the message delivery retry in MQTT5.0</h1>
+<p>I was looking at the <a href="https://docs.oasis-open.org/mqtt/mqtt/v5.0/mqtt-v5.0.html" rel="nofollow">OASIS MQTT5.0 Spec</a> and the message delivery retry part was a bit confusing to me.</p>
 <blockquote>
 <p>4.4 Message delivery retry<br>
 When a Client reconnects with Clean Start set to 0 and a session is present, both the Client and Server MUST resend any unacknowledged PUBLISH packets (where QoS &gt; 0) and PUBREL packets using their original Packet Identifiers. This is the only circumstance where a Client or Server is REQUIRED to resend messages. Clients and Servers MUST NOT resend messages at any other time [MQTT-4.4.0-1].</p>
