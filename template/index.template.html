@@ -63,16 +63,19 @@
 	</span>
 </h1>
 
-<ol style="padding-left: 0px">
+<ol style="padding-left: 0px; list-style-type: decimal-leading-zero">
 {{#data}}
-	<li style="margin-top: 2em; list-style: none; --color-accent-fg: initial">
+<!-- <li style="margin-top: 2em; list-style: none; --color-accent-fg: initial"> -->
+	<li style="margin-top: 3em; --color-accent-fg: initial">
 		<span style="font-weight: 900; font-size: 1.3em;">
 			<a href="posts/{{id}}.html">
-				<i class="fa-solid fa-link" style="font-size: 14px; vertical-align: middle;"></i> {{title}}
+				<!-- <i class="fa-solid fa-link" style="font-size: 14px; vertical-align: middle;"></i> -->
+				{{title}}
 			</a>
 		</span><br>
 
-		<span style="color: gray; margin-left: 1.5em;">
+		<!-- <span style="color: gray; margin-left: 1.5em;"> -->
+		<span style="color: gray">
 			<i class="fa-regular fa-calendar-days"></i> {{updated_at_short}}
 			{{#labels}}
 				<span style="margin-left: 0.5em;">
