@@ -50,19 +50,21 @@
 
 <body class="markdown-body">
 
-	<div style="margin-bottom: 64px";>
-	<h1 style="font-weight: 900;">{{title}}
+	<!--	<div style="margin-bottom: 64px";> -->
+	<h1 style="font-weight: 900; margin-bottom: 5px">{{title}}
 		<span style="float: right; --color-accent-fg: initial">
 			<a href="{{html_url}}"><i class="fa-solid fa-gear"></i></a>
 		</span>
 	</h1>
-	  <i class="fa-regular fa-calendar-days"></i> {{updated_at_short}}
-		{{#labels}}
-			<span style="margin-left: 0.5em;">
-				<i class="fa-solid fa-tag"></i> {{name}}
-			</span>
-		{{/labels}}
-	</div>
+	  <div style="margin-bottom: 72px">
+		  <i class="fa-regular fa-calendar-days"></i> {{updated_at_short}}
+			{{#labels}}
+				<span style="margin-left: 0.5em;">
+					<i class="fa-solid fa-tag"></i> {{name}}
+				</span>
+			{{/labels}}
+		</div>
+		<!-- 	</div> -->
 
 	<!-- {{{}}} three brakets print HTML as is -->
 	{{{issue_html.data}}}
@@ -84,7 +86,7 @@
 
 	@media (max-width: 767px) {
 		.markdown-body {
-			padding: 15px;
+			padding: 30px;
 		}
 	}
 </style>
