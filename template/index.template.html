@@ -66,9 +66,13 @@
 <ol>
 {{#data}}
 	<li style="margin-top: 2em; list-style: none; --color-accent-fg: initial">
-		<span style="font-weight: 900; font-size: 1.3em;"><a href="posts/{{id}}.html"><i class="fa-solid fa-link"></i> {{title}}</a></span><br>
+		<span style="font-weight: 900; font-size: 1.3em;">
+			<a href="posts/{{id}}.html">
+				<i class="fa-solid fa-link" style="font-size: 14px; vertical-align: middle;"></i> {{title}}
+			</a>
+		</span><br>
 
-		<span style="color: gray; margin-left: 2em;">
+		<span style="color: gray; margin-left: 1.5em;">
 			<i class="fa-regular fa-calendar-days"></i> {{updated_at_short}}
 			{{#labels}}
 				<span style="margin-left: 0.5em;">
