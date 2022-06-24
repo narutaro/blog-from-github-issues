@@ -2,15 +2,30 @@
 <html class="no-js" lang="">
 
 <head>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y0XWZZ2L8J"></script>
+	<script>
+	 window.dataLayer = window.dataLayer || [];
+	 function gtag(){dataLayer.push(arguments);}
+	 gtag('js', new Date());
+	
+	 gtag('config', 'G-Y0XWZZ2L8J');
+	</script>
+
   <meta charset="utf-8">
-  <title></title>
+  <title>TOOL BOX</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta property="og:title" content="">
-  <meta property="og:type" content="">
-  <meta property="og:url" content="">
-  <meta property="og:image" content="">
+	<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+  <meta property="og:title" content="TOOL BOX">
+	<meta property="og:description" content="A blog genarated by Github issues">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https:&#x2F;&#x2F;github.com&#x2F;narutaro&#x2F;blog&#x2F;issues&#x2F;19">
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/4873581?v=4">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:card" content="summary_large_image">
 
   <link rel="manifest" href="site.webmanifest">
   <link rel="apple-touch-icon" href="icon.png">
@@ -35,14 +50,16 @@
 
 <body class="markdown-body">
 
-	<div style="margin-bottom: 64px";>
-	<h1 style="font-weight: 900;">TOOL BOX
+	<!--	<div style="margin-bottom: 64px";> -->
+	<h1 style="font-weight: 900; margin-bottom: 5px">TOOL BOX
 		<span style="float: right; --color-accent-fg: initial">
 			<a href="https:&#x2F;&#x2F;github.com&#x2F;narutaro&#x2F;blog&#x2F;issues&#x2F;19"><i class="fa-solid fa-gear"></i></a>
 		</span>
 	</h1>
-	  <i class="fa-regular fa-calendar-days"></i> May 29th, 2022
-	</div>
+	  <div style="margin-bottom: 72px">
+		  <i class="fa-regular fa-calendar-days"></i> Jun 24th, 2022
+		</div>
+		<!-- 	</div> -->
 
 	<!--  three brakets print HTML as is -->
 	<h1>Local web server</h1>
@@ -57,17 +74,12 @@
 <h2>IoT Core logs</h2>
 <pre class="notranslate"><code class="notranslate">aws logs tail --follow AWSIotLogsV2
 </code></pre>
+<h1>SCP</h1>
+<p>Copy a remote folder to local</p>
+<pre class="notranslate"><code class="notranslate">scp -r ubuntu@host_name:/path/to/the/dir .
+</code></pre>
 
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y0XWZZ2L8J"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-Y0XWZZ2L8J');
-</script>
 
 </body>
 
@@ -84,7 +96,7 @@
 
 	@media (max-width: 767px) {
 		.markdown-body {
-			padding: 15px;
+			padding: 30px;
 		}
 	}
 </style>
