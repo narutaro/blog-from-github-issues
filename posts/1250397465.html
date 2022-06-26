@@ -77,7 +77,7 @@
 <h1>Cloudwatch logs</h1>
 <p>You can <code class="notranslate">tail -f</code> for the Amazon CloudWatch logs.</p>
 <h2>Lambda logs</h2>
-<div class="highlight highlight-source-shell"><pre>aws logs tail --follow /aws</pre></div>
+<div class="highlight highlight-source-shell"><pre>aws logs tail --follow /aws/lambda/<span class="pl-k">&lt;</span>function_name<span class="pl-k">&gt;</span></pre></div>
 <p>You don't have to put full <strong>log group name</strong>. Just hit <code class="notranslate">tab</code> after <code class="notranslate">/aws</code> to complement the rest.</p>
 <h2>IoT Core logs</h2>
 <pre class="notranslate"><code class="notranslate">aws logs tail --follow AWSIotLogsV2
