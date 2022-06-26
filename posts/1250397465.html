@@ -57,12 +57,20 @@
 		</span>
 	</h1>
 	  <div style="margin-bottom: 72px">
-		  <i class="fa-regular fa-calendar-days"></i> Jun 24th, 2022
+		  <i class="fa-regular fa-calendar-days"></i> Jun 26th, 2022
 		</div>
 		<!-- 	</div> -->
 
 	<!--  three brakets print HTML as is -->
-	<h1>Local web server</h1>
+	<h1>Named profiles for the AWS CLI</h1>
+<h2>Setting a profile</h2>
+<pre class="notranslate"><code class="notranslate">aws configure --profile &lt;profile_name&gt;
+</code></pre>
+<p>The setting will be stored in <code class="notranslate">~/.aws/credentials</code></p>
+<h2>Use a profile</h2>
+<pre class="notranslate"><code class="notranslate">export AWS_PROFILE=&lt;profile_name&gt;
+</code></pre>
+<h1>Local web server</h1>
 <div class="highlight highlight-source-shell"><pre>python3 -m http.server --bind 192.168.68.104</pre></div>
 <h1>Create a large file</h1>
 <div class="highlight highlight-source-shell"><pre>base64 /dev/urandom <span class="pl-k">|</span> head -c 128000</pre></div>
