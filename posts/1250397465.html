@@ -57,34 +57,38 @@
 		</span>
 	</h1>
 	  <div style="margin-bottom: 72px">
-		  <i class="fa-regular fa-calendar-days"></i> Jun 29th, 2022
+		  <i class="fa-regular fa-calendar-days"></i> Jul 9th, 2022
 		</div>
 		<!-- 	</div> -->
 
 	<!--  three brakets print HTML as is -->
-	<h1>Check global IP address</h1>
+	<h3><code class="notranslate">apt</code> command</h3>
+<div class="highlight highlight-source-shell"><pre>apt list --installed
+apt-cache search <span class="pl-k">&lt;</span>keyword<span class="pl-k">&gt;</span>
+apt-get install</pre></div>
+<h3>Check global IP address</h3>
 <div class="highlight highlight-source-shell"><pre>curl inet-ip.info</pre></div>
-<h1>Named profiles for the AWS CLI</h1>
-<h2>Setting a profile</h2>
+<h3>Named profiles for the AWS CLI</h3>
+<p>Setting a profile</p>
 <pre class="notranslate"><code class="notranslate">aws configure --profile &lt;profile_name&gt;
 </code></pre>
 <p>The setting will be stored in <code class="notranslate">~/.aws/credentials</code></p>
-<h2>Use a profile</h2>
+<p>Use a profile</p>
 <pre class="notranslate"><code class="notranslate">export AWS_PROFILE=&lt;profile_name&gt;
 </code></pre>
-<h1>Local web server</h1>
+<h3>Local web server</h3>
 <div class="highlight highlight-source-shell"><pre>python3 -m http.server --bind 192.168.68.104</pre></div>
-<h1>Create a large file</h1>
+<h3>Create a large file</h3>
 <div class="highlight highlight-source-shell"><pre>base64 /dev/urandom <span class="pl-k">|</span> head -c 128000</pre></div>
-<h1>Cloudwatch logs</h1>
+<h3>Cloudwatch logs</h3>
 <p>You can <code class="notranslate">tail -f</code> for the Amazon CloudWatch logs.</p>
-<h2>Lambda logs</h2>
+<h3>Lambda logs</h3>
 <div class="highlight highlight-source-shell"><pre>aws logs tail --follow /aws/lambda/<span class="pl-k">&lt;</span>function_name<span class="pl-k">&gt;</span></pre></div>
 <p>You don't have to put full <strong>log group name</strong>. Just hit <code class="notranslate">tab</code> after <code class="notranslate">/aws</code> to complement the rest.</p>
-<h2>IoT Core logs</h2>
+<h3>IoT Core logs</h3>
 <pre class="notranslate"><code class="notranslate">aws logs tail --follow AWSIotLogsV2
 </code></pre>
-<h1>SCP</h1>
+<h3>SCP</h3>
 <p>Copy a remote folder to local</p>
 <pre class="notranslate"><code class="notranslate">scp -r ubuntu@host_name:/path/to/the/dir .
 </code></pre>
