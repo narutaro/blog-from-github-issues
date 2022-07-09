@@ -78,8 +78,14 @@
   -d \
   -m hello \</pre></div>
 <ul>
-<li></li>
+<li><code class="notranslate">mosquitto_pub</code> with <code class="notranslate">-l</code> keeps the connection open, get message from the standard input</li>
 </ul>
+<pre class="notranslate"><code class="notranslate">mosquitto_pub \
+  -h test.mosquitto.org \
+  -t t1 \
+  -d \
+  -l
+</code></pre>
 <ol>
 <li><a href="http://www.steves-internet-guide.com/install-mosquitto-linux/" rel="nofollow">How to Install The Mosquitto MQTT Broker on Linux</a></li>
 </ol>
