@@ -82,10 +82,10 @@ apt-get install</pre></div>
 <div class="highlight highlight-source-shell"><pre>base64 /dev/urandom <span class="pl-k">|</span> head -c 128000</pre></div>
 <h3>Cloudwatch logs</h3>
 <p>You can <code class="notranslate">tail -f</code> for the Amazon CloudWatch logs.</p>
-<h3>Lambda logs</h3>
+<h4>Lambda logs</h4>
 <div class="highlight highlight-source-shell"><pre>aws logs tail --follow /aws/lambda/<span class="pl-k">&lt;</span>function_name<span class="pl-k">&gt;</span></pre></div>
 <p>You don't have to put full <strong>log group name</strong>. Just hit <code class="notranslate">tab</code> after <code class="notranslate">/aws</code> to complement the rest.</p>
-<h3>IoT Core logs</h3>
+<h4>IoT Core logs</h4>
 <pre class="notranslate"><code class="notranslate">aws logs tail --follow AWSIotLogsV2
 </code></pre>
 <h3>SCP</h3>
