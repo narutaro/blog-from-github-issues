@@ -57,7 +57,7 @@
 		</span>
 	</h1>
 	  <div style="margin-bottom: 72px">
-		  <i class="fa-regular fa-calendar-days"></i> Jul 9th, 2022
+		  <i class="fa-regular fa-calendar-days"></i> Jul 17th, 2022
 				<span style="margin-left: 0.5em;">
 					<i class="fa-solid fa-tag"></i> mqtt
 				</span>
@@ -65,16 +65,14 @@
 		<!-- 	</div> -->
 
 	<!--  three brakets print HTML as is -->
-	<ul>
-<li>Get started</li>
-</ul>
+	<h1>Get started</h1>
 <div class="highlight highlight-source-shell"><pre>mosquitto_sub \
   -h test.mosquitto.org \
-  -t t1 \
+  -t topic1 \
   -d</pre></div>
 <div class="highlight highlight-source-shell"><pre>mosquitto_pub \
   -h test.mosquitto.org \
-  -t t1 \
+  -t topic1 \
   -d \
   -m hello \</pre></div>
 <ul>
@@ -82,10 +80,41 @@
 </ul>
 <pre class="notranslate"><code class="notranslate">mosquitto_pub \
   -h test.mosquitto.org \
-  -t t1 \
+  -t topic1 \
   -d \
   -l
 </code></pre>
+<h1>Persistent Session</h1>
+<ul>
+<li>In case a client disconnected for a while and reconnect, the client can receive the messages sent while the client got disconnected.</li>
+<li>Persistent Session can be enabled in case:
+<ul>
+<li><strong>QoS</strong> value larger than 1 <code class="notranslate">-q</code></li>
+<li><strong>Clean Session Flag</strong> is 1 which means false <code class="notranslate">-c</code></li>
+<li><strong>Session Expiration Interval</strong> is larger than 0 <code class="notranslate">-x</code></li>
+</ul>
+</li>
+</ul>
+<pre class="notranslate"><code class="notranslate">mosquitto_sub \
+  -h localhost \
+  -i persistent-session-sub \
+  -t topic1 \
+  -V 5 \
+  -q 1 \
+  -c \
+  -x 300 \
+  -d
+</code></pre>
+<pre class="notranslate"><code class="notranslate">mosquitto_pub \
+  -h localhost \
+  -i persistent-session-pub \
+  -t topic1 \
+  -V 5 \
+  -q 1 \
+  -d \
+  -l
+</code></pre>
+<h1>References</h1>
 <ol>
 <li><a href="http://www.steves-internet-guide.com/install-mosquitto-linux/" rel="nofollow">How to Install The Mosquitto MQTT Broker on Linux</a></li>
 </ol>
