@@ -87,7 +87,7 @@
 <h1>Persistent Session</h1>
 <ul>
 <li>In case a client disconnected for a while and reconnect, the client can receive the messages sent while the client got disconnected.</li>
-<li>Persistent Session can be enabled in case:
+<li>Persistent Session in MQTTv5 can be enabled in case:
 <ul>
 <li><strong>QoS</strong> value larger than 1 <code class="notranslate">-q</code></li>
 <li><strong>Clean Session Flag</strong> is 1 which means false <code class="notranslate">-c</code></li>
@@ -111,6 +111,30 @@
   -t topic1 \
   -V 5 \
   -q 1 \
+  -d \
+  -l
+</code></pre>
+<h1>Shared Subscription</h1>
+<p>Shared Subscription is load balancing feature. In case clients subscribe a topic starting with $share, the clients share the messages equally - typically round robin manner. In the example below, the app1 and app2 shares the message to <code class="notranslate">news/sports</code></p>
+<pre class="notranslate"><code class="notranslate">mosquitto_sub \
+  -h localhost \
+  -i app1 \
+  -t '$share/group1/news/sports' \
+  -V 5 \
+  -d
+</code></pre>
+<pre class="notranslate"><code class="notranslate">mosquitto_sub \
+  -h localhost \
+  -i app2 \
+  -t '$share/group1/news/sports' \
+  -V 5 \
+  -d
+</code></pre>
+<pre class="notranslate"><code class="notranslate">mosquitto_pub \
+  -h localhost \
+  -i vehicle \
+  -t news/sports \
+  -V 5 \
   -d \
   -l
 </code></pre>
