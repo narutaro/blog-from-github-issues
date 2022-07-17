@@ -57,29 +57,30 @@
 		</span>
 	</h1>
 	  <div style="margin-bottom: 72px">
-		  <i class="fa-regular fa-calendar-days"></i> Jul 9th, 2022
+		  <i class="fa-regular fa-calendar-days"></i> Jul 17th, 2022
 		</div>
 		<!-- 	</div> -->
 
 	<!--  three brakets print HTML as is -->
-	<h3><code class="notranslate">apt</code> command</h3>
-<div class="highlight highlight-source-shell"><pre>apt list --installed
-apt-cache search <span class="pl-k">&lt;</span>keyword<span class="pl-k">&gt;</span>
-apt-get install</pre></div>
-<h3>Check global IP address</h3>
-<div class="highlight highlight-source-shell"><pre>curl inet-ip.info</pre></div>
-<h3>Named profiles for the AWS CLI</h3>
-<p>Setting a profile</p>
+	<h1>AWS</h1>
+<h3>AWS CLI Profile</h3>
+<ul>
+<li>Set a profile</li>
+</ul>
 <pre class="notranslate"><code class="notranslate">aws configure --profile &lt;profile_name&gt;
 </code></pre>
 <p>The setting will be stored in <code class="notranslate">~/.aws/credentials</code></p>
-<p>Use a profile</p>
+<ul>
+<li>Use a profile</li>
+</ul>
 <pre class="notranslate"><code class="notranslate">export AWS_PROFILE=&lt;profile_name&gt;
 </code></pre>
-<h3>Local web server</h3>
-<div class="highlight highlight-source-shell"><pre>python3 -m http.server --bind 192.168.68.104</pre></div>
-<h3>Create a large file</h3>
-<div class="highlight highlight-source-shell"><pre>base64 /dev/urandom <span class="pl-k">|</span> head -c 128000</pre></div>
+<p>Related commands and configuration files:</p>
+<ul>
+<li><code class="notranslate">aws configure list</code></li>
+<li><code class="notranslate">aws sts get-caller-identity </code></li>
+<li><code class="notranslate">~/.aws/config</code></li>
+</ul>
 <h3>Cloudwatch logs</h3>
 <p>You can <code class="notranslate">tail -f</code> for the Amazon CloudWatch logs.</p>
 <h4>Lambda logs</h4>
@@ -88,6 +89,17 @@ apt-get install</pre></div>
 <h4>IoT Core logs</h4>
 <pre class="notranslate"><code class="notranslate">aws logs tail --follow AWSIotLogsV2
 </code></pre>
+<h1>Linux</h1>
+<h3><code class="notranslate">apt</code> command</h3>
+<div class="highlight highlight-source-shell"><pre>apt list --installed
+apt-cache search <span class="pl-k">&lt;</span>keyword<span class="pl-k">&gt;</span>
+apt-get install</pre></div>
+<h3>Check global IP address</h3>
+<div class="highlight highlight-source-shell"><pre>curl inet-ip.info</pre></div>
+<h3>Local web server</h3>
+<div class="highlight highlight-source-shell"><pre>python3 -m http.server --bind 192.168.68.104</pre></div>
+<h3>Create a large file</h3>
+<div class="highlight highlight-source-shell"><pre>base64 /dev/urandom <span class="pl-k">|</span> head -c 128000</pre></div>
 <h3>SCP</h3>
 <p>Copy a remote folder to local</p>
 <pre class="notranslate"><code class="notranslate">scp -r ubuntu@host_name:/path/to/the/dir .
