@@ -145,7 +145,6 @@
 <li>Subscriber subscribe</li>
 <li>The subscriber will get the retain message(last published message).</li>
 </ol>
-<p>You can confirm the retain flag and other parameters with subscriber option <code class="notranslate">-F '%j'</code>.</p>
 <pre class="notranslate"><code class="notranslate">mosquitto_sub \
   -h test.mosquitto.org \
   -t t1 \
@@ -158,6 +157,9 @@
   -d \
   -r \
   -l
+</code></pre>
+<p>You can confirm the retain flag and other parameters with subscriber option <code class="notranslate">-F '%j'</code>.</p>
+<pre class="notranslate"><code class="notranslate">{"tst":"2022-07-23T08:11:22.147314Z+0000","topic":"t1","qos":0,"retain":1,"payloadlen":13,"payload":"third message"}
 </code></pre>
 <h1>References</h1>
 <ol>
