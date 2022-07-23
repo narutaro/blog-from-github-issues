@@ -143,8 +143,9 @@
 <ol>
 <li>Publish message while the subscriber is disconnected</li>
 <li>Subscriber subscribe</li>
-<li>The subscriber will get the retain message(last published message).</li>
+<li>The subscriber will get the retain message(last published message)</li>
 </ol>
+<p>It is important to understand that a retained message has nothing to do with persistent session.</p>
 <pre class="notranslate"><code class="notranslate">mosquitto_sub \
   -h test.mosquitto.org \
   -t t1 \
