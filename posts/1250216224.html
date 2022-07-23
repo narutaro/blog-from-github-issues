@@ -57,7 +57,7 @@
 		</span>
 	</h1>
 	  <div style="margin-bottom: 72px">
-		  <i class="fa-regular fa-calendar-days"></i> Jul 17th, 2022
+		  <i class="fa-regular fa-calendar-days"></i> Jul 23rd, 2022
 				<span style="margin-left: 0.5em;">
 					<i class="fa-solid fa-tag"></i> mqtt
 				</span>
@@ -136,6 +136,27 @@
   -t news/sports \
   -V 5 \
   -d \
+  -l
+</code></pre>
+<h1>Retained Message</h1>
+<p>When publishing with <code class="notranslate">-r</code>, the retain flag will be set.</p>
+<ol>
+<li>Publish message while the subscriber is disconnected</li>
+<li>Subscriber subscribe</li>
+<li>The subscriber will get the retain message(last published message).</li>
+</ol>
+<p>You can confirm the retain flag and other parameters with subscriber option <code class="notranslate">-F '%j'</code>.</p>
+<pre class="notranslate"><code class="notranslate">mosquitto_sub \
+  -h test.mosquitto.org \
+  -t t1 \
+  -d \
+  -F '%j'
+</code></pre>
+<pre class="notranslate"><code class="notranslate">mosquitto_pub \
+  -h test.mosquitto.org \
+  -t t1 \
+  -d \
+  -r \
   -l
 </code></pre>
 <h1>References</h1>
