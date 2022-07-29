@@ -1,0 +1,88 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y0XWZZ2L8J"></script>
+	<script>
+	 window.dataLayer = window.dataLayer || [];
+	 function gtag(){dataLayer.push(arguments);}
+	 gtag('js', new Date());
+	
+	 gtag('config', 'G-Y0XWZZ2L8J');
+	</script>
+
+  <meta charset="utf-8">
+  <title>jq</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+  <meta property="og:title" content="jq">
+	<meta property="og:description" content="A blog genarated by Github issues">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https:&#x2F;&#x2F;github.com&#x2F;narutaro&#x2F;blog&#x2F;issues&#x2F;20">
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/4873581?v=4">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:card" content="summary_large_image">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="/blog/css/normalize.css">
+  <link rel="stylesheet" href="/blog/css/main.css">
+
+  <!-- Github flavored CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown.min.css">
+
+	<!-- User CSS -->
+  <link rel="stylesheet" href="/blog/css/blog.css">
+
+  <!-- Fontawsome -->
+	<script src="https://kit.fontawesome.com/a1763a7d6f.js" crossorigin="anonymous"></script>
+
+	<!--
+  <meta name="theme-color" content="#fafafa">
+	-->
+</head>
+
+<body class="markdown-body">
+
+	<!--	<div style="margin-bottom: 64px";> -->
+	<h1 style="font-weight: 900; margin-bottom: 5px">jq
+		<span style="float: right; --color-accent-fg: initial">
+			<a href="https:&#x2F;&#x2F;github.com&#x2F;narutaro&#x2F;blog&#x2F;issues&#x2F;20"><i class="fa-solid fa-gear"></i></a>
+		</span>
+	</h1>
+	  <div style="margin-bottom: 72px">
+		  <i class="fa-regular fa-calendar-days"></i> Jul 29th, 2022
+		</div>
+		<!-- 	</div> -->
+
+	<!--  three brakets print HTML as is -->
+	<div class="highlight highlight-source-shell"><pre>aws iot list-things <span class="pl-k">|</span> jq <span class="pl-s"><span class="pl-pds">'</span> .[][] | select(.thingName == "c2")<span class="pl-pds">'</span></span></pre></div>
+<p>How can I use regexp?</p>
+
+
+
+</body>
+
+</html>
+
+<style>
+	.markdown-body {
+		box-sizing: border-box;
+		min-width: 200px;
+		max-width: 980px;
+		margin: 0 auto;
+		padding: 45px;
+	}
+
+	@media (max-width: 767px) {
+		.markdown-body {
+			padding: 30px;
+		}
+	}
+</style>
