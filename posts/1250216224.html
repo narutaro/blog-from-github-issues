@@ -184,6 +184,48 @@
   -d \
   -l
 </code></pre>
+<h1>User Property</h1>
+<pre class="notranslate"><code class="notranslate">mosquitto_sub --cafile ../../AmazonRootCA1.pem \
+  --cert device.pem.crt \
+  --key private.pem.key \
+  -h a3sgvvzvumckdn-ats.gamma.us-east-1.iot.amazonaws.com \
+  -p 8883 \
+  -i masainox-t3 \
+  -t topic1 \
+  -V 5 \
+  --tls-version tlsv1.3 \
+  -F %j \
+  -d
+</code></pre>
+<pre class="notranslate"><code class="notranslate">mosquitto_pub --cafile ../../AmazonRootCA1.pem \
+  --cert device.pem.crt \
+  --key private.pem.key \
+  -h a3sgvvzvumckdn-ats.gamma.us-east-1.iot.amazonaws.com \
+  -p 8883 \
+  -t topic1 \
+  -i masainox-t4 \
+  -V 5 \
+  --tls-version tlsv1.3 \
+  -D publish user-property color red \
+  -D publish user-property size large \
+  -l \
+  -d
+</code></pre>
+<pre class="notranslate"><code class="notranslate">{
+  "tst": "2022-07-29T09:16:23.635403Z+0000",
+  "topic": "topic1",
+  "qos": 0,
+  "retain": 0,
+  "payloadlen": 4,
+  "properties": {
+    "user-properties": {
+      "color": "red",
+      "size": "large"
+    }
+  },
+  "payload": "vitz"
+}
+</code></pre>
 <h1>References</h1>
 <ol>
 <li><a href="http://www.steves-internet-guide.com/install-mosquitto-linux/" rel="nofollow">How to Install The Mosquitto MQTT Broker on Linux</a></li>
