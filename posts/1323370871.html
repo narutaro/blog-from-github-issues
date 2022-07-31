@@ -62,7 +62,12 @@
 		<!-- 	</div> -->
 
 	<!--  three brakets print HTML as is -->
-	<h1>Before you build</h1>
+	<h1>Device</h1>
+<ul>
+<li>Jetson Nano</li>
+<li>Ubuntu 18.04</li>
+</ul>
+<h1>Before you build</h1>
 <pre class="notranslate"><code class="notranslate">sudo apt-get install libssl-dev libcurl4-openssl-dev liblog4cplus-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev gstreamer1.0-plugins-base-apps gstreamer1.0-plugins-bad gstreamer1.0-plugins-good gstreamer1.0-plugins-ugly gstreamer1.0-tools
 </code></pre>
 <p>In case you also build JNI, you need:</p>
@@ -80,6 +85,14 @@ make
 CMakeFiles/                         kvs_gstreamer_audio_video_sample    libKinesisVideoProducer.so
 Makefile                            kvs_gstreamer_file_uploader_sample  libKinesisVideoProducerJNI.so
 cmake_install.cmake                 kvs_gstreamer_multistream_sample    libgstkvssink.so
+</code></pre>
+<h1>Test</h1>
+<pre class="notranslate"><code class="notranslate">gst-launch-1.0 videotestsrc ! xvimagesink
+
+</code></pre>
+<pre class="notranslate"><code class="notranslate">gst-launch-1.0 v4l2src device=/dev/video0 ! video/x-raw, width=640, height=480 ! xvimagesink
+</code></pre>
+<pre class="notranslate"><code class="notranslate">
 </code></pre>
 
 
