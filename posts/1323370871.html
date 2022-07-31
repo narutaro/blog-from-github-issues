@@ -62,8 +62,24 @@
 		<!-- 	</div> -->
 
 	<!--  three brakets print HTML as is -->
-	<p>before cmake, you need to do</p>
-<pre class="notranslate"><code class="notranslate">export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-arm64
+	<h1>Before you build</h1>
+<pre class="notranslate"><code class="notranslate">sudo apt-get install libssl-dev libcurl4-openssl-dev liblog4cplus-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev gstreamer1.0-plugins-base-apps gstreamer1.0-plugins-bad gstreamer1.0-plugins-good gstreamer1.0-plugins-ugly gstreamer1.0-tools
+</code></pre>
+<p>In case you also build JNI, you need:</p>
+<pre class="notranslate"><code class="notranslate">apt-get install -y openjdk-11-jdk
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-arm64
+</code></pre>
+<h1>Build</h1>
+<pre class="notranslate"><code class="notranslate">mkdir -p amazon-kinesis-video-streams-producer-sdk-cpp/build
+cd amazon-kinesis-video-streams-producer-sdk-cpp/build
+cmake .. -DBUILD_GSTREAMER_PLUGIN=ON -DBUILD_JNI=TRUE
+make
+</code></pre>
+<p>You will get followings in the build directory</p>
+<pre class="notranslate"><code class="notranslate">CMakeCache.txt                      dependency/                         kvs_gstreamer_sample
+CMakeFiles/                         kvs_gstreamer_audio_video_sample    libKinesisVideoProducer.so
+Makefile                            kvs_gstreamer_file_uploader_sample  libKinesisVideoProducerJNI.so
+cmake_install.cmake                 kvs_gstreamer_multistream_sample    libgstkvssink.so
 </code></pre>
 
 
