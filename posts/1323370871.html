@@ -86,12 +86,12 @@ CMakeFiles/                         kvs_gstreamer_audio_video_sample    libKines
 Makefile                            kvs_gstreamer_file_uploader_sample  libKinesisVideoProducerJNI.so
 cmake_install.cmake                 kvs_gstreamer_multistream_sample    libgstkvssink.so
 </code></pre>
-<h1>Test</h1>
+<h1>Test on the client</h1>
 <pre class="notranslate"><code class="notranslate">gst-launch-1.0 videotestsrc ! xvimagesink
-
 </code></pre>
 <pre class="notranslate"><code class="notranslate">gst-launch-1.0 v4l2src device=/dev/video0 ! video/x-raw, width=640, height=480 ! xvimagesink
 </code></pre>
+<h1>Send to the KVS</h1>
 <pre class="notranslate"><code class="notranslate">
 </code></pre>
 
