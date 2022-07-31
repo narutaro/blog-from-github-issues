@@ -62,19 +62,19 @@
 		<!-- 	</div> -->
 
 	<!--  three brakets print HTML as is -->
-	<h1>Device</h1>
+	<h2>Device</h2>
 <ul>
 <li>Jetson Nano</li>
 <li>Ubuntu 18.04</li>
 </ul>
-<h1>Before you build</h1>
+<h2>Before you build</h2>
 <pre class="notranslate"><code class="notranslate">sudo apt-get install libssl-dev libcurl4-openssl-dev liblog4cplus-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev gstreamer1.0-plugins-base-apps gstreamer1.0-plugins-bad gstreamer1.0-plugins-good gstreamer1.0-plugins-ugly gstreamer1.0-tools
 </code></pre>
 <p>In case you also build JNI, you need:</p>
 <pre class="notranslate"><code class="notranslate">apt-get install -y openjdk-11-jdk
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-arm64
 </code></pre>
-<h1>Build</h1>
+<h2>Build</h2>
 <pre class="notranslate"><code class="notranslate">mkdir -p amazon-kinesis-video-streams-producer-sdk-cpp/build
 cd amazon-kinesis-video-streams-producer-sdk-cpp/build
 cmake .. -DBUILD_GSTREAMER_PLUGIN=ON -DBUILD_JNI=TRUE
@@ -86,21 +86,23 @@ CMakeFiles/                         kvs_gstreamer_audio_video_sample    libKines
 Makefile                            kvs_gstreamer_file_uploader_sample  libKinesisVideoProducerJNI.so
 cmake_install.cmake                 kvs_gstreamer_multistream_sample    libgstkvssink.so
 </code></pre>
-<h1>Set-up</h1>
+<h2>Set-up</h2>
 <pre class="notranslate"><code class="notranslate">export GST_PLUGIN_PATH=$(pwd)/build
 export LD_LIBRARY_PATH=$(pwd)/open-source/local/lib
 </code></pre>
 <p>Check if kvssink is available</p>
 <pre class="notranslate"><code class="notranslate">gst-inspect-1.0 kvssink
 </code></pre>
-<h1>Test on the client</h1>
+<h2>Test on the client</h2>
 <pre class="notranslate"><code class="notranslate">gst-launch-1.0 videotestsrc ! xvimagesink
 </code></pre>
 <pre class="notranslate"><code class="notranslate">gst-launch-1.0 v4l2src device=/dev/video0 ! video/x-raw, width=640, height=480 ! xvimagesink
 </code></pre>
-<h1>Send to the KVS</h1>
-<pre class="notranslate"><code class="notranslate">
-</code></pre>
+<h2>Send to the KVS</h2>
+<h2>Reference</h2>
+<ul>
+<li><a href="https://dev.classmethod.jp/articles/kinesis-video-streams-jetson-nano/" rel="nofollow">https://dev.classmethod.jp/articles/kinesis-video-streams-jetson-nano/</a></li>
+</ul>
 
 
 
