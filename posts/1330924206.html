@@ -63,13 +63,14 @@
 
 	<!--  three brakets print HTML as is -->
 	<p>trt_pose without Jupyter notebook</p>
+<p>!!! Increase Jetson Nano swap first !!!</p>
 <h2>Use base container image</h2>
 <pre class="notranslate"><code class="notranslate">sudo docker run --runtime nvidia -it  --network host \
   --volume ~/nvdli-data:/nvdli-nano/data \
   --device /dev/video1 \
 nvcr.io/nvidia/dli/dli-nano-ai:v2.0.1-r32.6.1
 </code></pre>
-<h2>Install Pytorch</h2>
+<h2>Install pytorch</h2>
 <pre class="notranslate"><code class="notranslate">wget https://nvidia.box.com/shared/static/p57jwntv436lfrd78inwl7iml6p13fzh.whl -O torch-1.8.0-cp36-cp36m-linux_aarch64.whl
 apt-get update
 apt-get install python3-pip libopenblas-base libopenmpi-dev libomp-dev
@@ -86,7 +87,12 @@ Successfully installed torch-1.8.0
 <h2>Install torch2trt</h2>
 <pre class="notranslate"><code class="notranslate">git clone https://github.com/NVIDIA-AI-IOT/torch2trt
 cd torch2trt
-python3 setup.py install
+python3 setup.py install # don't need?
+python3 setup.py install --plugins 
+</code></pre>
+<h2>Install trt_pose</h2>
+<pre class="notranslate"><code class="notranslate">pip3 install tqdm cython pycocotools
+apt-get install python3-matplotlib
 </code></pre>
 
 
