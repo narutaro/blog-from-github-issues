@@ -62,7 +62,69 @@
 		<!-- 	</div> -->
 
 	<!--  three brakets print HTML as is -->
-	<h2>Monitor resource usage</h2>
+	<h2>Jetson version</h2>
+<pre class="notranslate"><code class="notranslate">cat /etc/nv_tegra_release
+# R32 (release), REVISION: 6.1, GCID: 27863751, BOARD: t210ref, EABI: aarch64, DATE: Mon Jul 26 19:20:30 UTC 2021
+</code></pre>
+<pre class="notranslate"><code class="notranslate">dpkg-query --show nvidia-l4t-core
+nvidia-l4t-core 32.6.1-20210726122000
+</code></pre>
+<h2>Ubuntu version</h2>
+<pre class="notranslate"><code class="notranslate">cat /etc/lsb-release 
+DISTRIB_ID=Ubuntu
+DISTRIB_RELEASE=18.04
+DISTRIB_CODENAME=bionic
+DISTRIB_DESCRIPTION="Ubuntu 18.04.6 LTS"
+</code></pre>
+<h2>JetPack version</h2>
+<pre class="notranslate"><code class="notranslate">sudo apt-cache show nvidia-jetpack
+[sudo] password for masaino: 
+Package: nvidia-jetpack
+Version: 4.6-b199
+Architecture: arm64
+Maintainer: NVIDIA Corporation
+Installed-Size: 194
+Depends: nvidia-cuda (= 4.6-b199), nvidia-opencv (= 4.6-b199), nvidia-cudnn8 (= 4.6-b199), nvidia-tensorrt (= 4.6-b199), nvidia-visionworks (= 4.6-b199), nvidia-container (= 4.6-b199), nvidia-vpi (= 4.6-b199), nvidia-l4t-jetson-multimedia-api (&gt;&gt; 32.6-0), nvidia-l4t-jetson-multimedia-api (&lt;&lt; 32.7-0)
+Homepage: http://developer.nvidia.com/jetson
+Priority: standard
+Section: metapackages
+Filename: pool/main/n/nvidia-jetpack/nvidia-jetpack_4.6-b199_arm64.deb
+Size: 29368
+SHA256: 69df11e22e2c8406fe281fe6fc27c7d40a13ed668e508a592a6785d40ea71669
+SHA1: 5c678b8762acc54f85b4334f92d9bb084858907a
+MD5sum: 1b96cd72f2a434e887f98912061d8cfb
+Description: NVIDIA Jetpack Meta Package
+Description-md5: ad1462289bdbc54909ae109d1d32c0a8
+
+Package: nvidia-jetpack
+Version: 4.6-b197
+Architecture: arm64
+Maintainer: NVIDIA Corporation
+Installed-Size: 194
+Depends: nvidia-cuda (= 4.6-b197), nvidia-opencv (= 4.6-b197), nvidia-cudnn8 (= 4.6-b197), nvidia-tensorrt (= 4.6-b197), nvidia-visionworks (= 4.6-b197), nvidia-container (= 4.6-b197), nvidia-vpi (= 4.6-b197), nvidia-l4t-jetson-multimedia-api (&gt;&gt; 32.6-0), nvidia-l4t-jetson-multimedia-api (&lt;&lt; 32.7-0)
+Homepage: http://developer.nvidia.com/jetson
+Priority: standard
+Section: metapackages
+Filename: pool/main/n/nvidia-jetpack/nvidia-jetpack_4.6-b197_arm64.deb
+Size: 29356
+SHA256: 104cd0c1efefe5865753ec9b0b148a534ffdcc9bae525637c7532b309ed44aa0
+SHA1: 8cca8b9ebb21feafbbd20c2984bd9b329a202624
+MD5sum: 463d4303429f163b97207827965e8fe0
+Description: NVIDIA Jetpack Meta Package
+Description-md5: ad1462289bdbc54909ae109d1d32c0a8
+</code></pre>
+<h2>Memory stats</h2>
+<p><strong>GR3D_FREQ</strong> is the GPU usage</p>
+<pre class="notranslate"><code class="notranslate">tegrastats
+RAM 2466/3956MB (lfb 69x4MB) SWAP 0/1978MB (cached 0MB) CPU [3%@102,1%@102,0%@102,3%@102] EMC_FREQ 0% GR3D_FREQ 0% PLL@29.5C CPU@30.5C PMIC@50C GPU@31.5C AO@37.5C thermal@30.75C
+RAM 2466/3956MB (lfb 69x4MB) SWAP 0/1978MB (cached 0MB) CPU [5%@102,1%@102,2%@102,5%@102] EMC_FREQ 0% GR3D_FREQ 99% PLL@29.5C CPU@31C PMIC@50C GPU@31.5C AO@37.5C thermal@31C
+RAM 2466/3956MB (lfb 69x4MB) SWAP 0/1978MB (cached 0MB) CPU [5%@102,0%@102,2%@102,1%@102] EMC_FREQ 0% GR3D_FREQ 0% PLL@29.5C CPU@30.5C PMIC@50C GPU@31.5C AO@37.5C thermal@30.75C
+RAM 2466/3956MB (lfb 69x4MB) SWAP 0/1978MB (cached 0MB) CPU [5%@102,3%@102,1%@102,4%@102] EMC_FREQ 0% GR3D_FREQ 0% PLL@29.5C CPU@31C PMIC@50C GPU@31C AO@37.5C thermal@31C
+RAM 2466/3956MB (lfb 69x4MB) SWAP 0/1978MB (cached 0MB) CPU [6%@102,2%@102,1%@102,3%@102] EMC_FREQ 0% GR3D_FREQ 0% PLL@29.5C CPU@31C PMIC@50C GPU@31C AO@37.5C thermal@31.25C
+RAM 2466/3956MB (lfb 69x4MB) SWAP 0/1978MB (cached 0MB) CPU [5%@102,3%@102,1%@102,3%@102] EMC_FREQ 0% GR3D_FREQ 99% PLL@29.5C CPU@30.5C PMIC@50C GPU@31C AO@37.5C thermal@31C
+</code></pre>
+<p><a href="https://qiita.com/karaage0703/items/b14c249aa33112669ee4" rel="nofollow">Jetson Nano関係のTIPSまとめ</a></p>
+<h2>Monitor resource usage</h2>
 <p><a href="https://github.com/martinkersner/gtop">https://github.com/martinkersner/gtop</a></p>
 <h2>Expand the swap</h2>
 <p>Use this shell script<br>
