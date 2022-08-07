@@ -62,7 +62,7 @@
 		<!-- 	</div> -->
 
 	<!--  three brakets print HTML as is -->
-	<p>trt_pose without Jupyter notebook</p>
+	<h2>Use trt_pose on Jetson Nano without Jupyter notebook</h2>
 <p>!!! Increase Jetson Nano swap first !!!</p>
 <h2>Use base container image</h2>
 <pre class="notranslate"><code class="notranslate">sudo docker run --runtime nvidia -it  --network host \
@@ -98,6 +98,7 @@ apt-get install python3-matplotlib
 cd trt_pose
 python3 setup.py install
 </code></pre>
+<p>This installation takes more than 15min. Have a coffee break <g-emoji class="g-emoji" alias="coffee" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2615.png">☕️</g-emoji>.</p>
 <h3>Download models</h3>
 <p>Put the model <code class="notranslate">resnet18_baseline_att_224x224_A</code> and <code class="notranslate">densenet121_baseline_att_256x256_B</code> in</p>
 
