@@ -1,0 +1,348 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y0XWZZ2L8J"></script>
+	<script>
+	 window.dataLayer = window.dataLayer || [];
+	 function gtag(){dataLayer.push(arguments);}
+	 gtag('js', new Date());
+	
+	 gtag('config', 'G-Y0XWZZ2L8J');
+	</script>
+
+  <meta charset="utf-8">
+  <title>trt_pose</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+  <meta property="og:title" content="trt_pose">
+	<meta property="og:description" content="A blog genarated by Github issues">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https:&#x2F;&#x2F;github.com&#x2F;narutaro&#x2F;blog&#x2F;issues&#x2F;22">
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/4873581?v=4">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:card" content="summary_large_image">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="/blog/css/normalize.css">
+  <link rel="stylesheet" href="/blog/css/main.css">
+
+  <!-- Github flavored CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown.min.css">
+
+	<!-- User CSS -->
+  <link rel="stylesheet" href="/blog/css/blog.css">
+
+  <!-- Fontawsome -->
+	<script src="https://kit.fontawesome.com/a1763a7d6f.js" crossorigin="anonymous"></script>
+
+	<!--
+  <meta name="theme-color" content="#fafafa">
+	-->
+</head>
+
+<body class="markdown-body">
+
+	<!--	<div style="margin-bottom: 64px";> -->
+	<h1 style="font-weight: 900; margin-bottom: 5px">trt_pose
+		<span style="float: right; --color-accent-fg: initial">
+			<a href="https:&#x2F;&#x2F;github.com&#x2F;narutaro&#x2F;blog&#x2F;issues&#x2F;22"><i class="fa-solid fa-gear"></i></a>
+		</span>
+	</h1>
+	  <div style="margin-bottom: 72px">
+		  <i class="fa-regular fa-calendar-days"></i> Aug 7th, 2022
+		</div>
+		<!-- 	</div> -->
+
+	<!--  three brakets print HTML as is -->
+	<p><a href="https://www.youtube.com/watch?v=y38Mze43w-A" rel="nofollow">https://www.youtube.com/watch?v=y38Mze43w-A</a></p>
+<h1>NGC - NVIDIA GPU CLOUD</h1>
+<p>CATALOG<br>
+<a href="https://catalog.ngc.nvidia.com/?filters=&amp;orderBy=scoreDESC&amp;query=" rel="nofollow">https://catalog.ngc.nvidia.com/?filters=&amp;orderBy=scoreDESC&amp;query=</a></p>
+<p>DLI Getting Started with AI on Jetson Nano<br>
+<a href="https://catalog.ngc.nvidia.com/orgs/nvidia/teams/dli/containers/dli-nano-ai" rel="nofollow">https://catalog.ngc.nvidia.com/orgs/nvidia/teams/dli/containers/dli-nano-ai</a></p>
+<p>Install docker image. Make sure you have docker installed.</p>
+<p>Create directory</p>
+<pre class="notranslate"><code class="notranslate">mkdir ~/nvdli-data
+</code></pre>
+<p>Make sure your JetPack version<sup><a href="#user-content-fn-1-d5087163f271f6b7f4500eac059d54f0" id="user-content-fnref-1-d5087163f271f6b7f4500eac059d54f0" data-footnote-ref="" aria-describedby="footnote-label">1</a></sup></p>
+<pre class="notranslate"><code class="notranslate">sudo apt-cache show nvidia-jetpack
+</code></pre>
+<p>My version looks <code class="notranslate">4.6-b199</code>.</p>
+<p>Pick up the right container version from the table in <a href="https://catalog.ngc.nvidia.com/orgs/nvidia/teams/dli/containers/dli-nano-ai" rel="nofollow">the page</a>. JetPack Release <code class="notranslate">4.6</code> is Container Version Tag <code class="notranslate">v2.0.1-r32.6.1</code>.</p>
+<p>Pull and run the container</p>
+<p>USB camera:</p>
+<pre class="notranslate"><code class="notranslate">sudo docker run --runtime nvidia -it --rm --network host \
+ --volume ~/nvdli-data:/nvdli-nano/data \
+ --device /dev/video1 \ 
+ nvcr.io/nvidia/dli/dli-nano-ai:v2.0.1-r32.6.1
+</code></pre>
+<p>CSI camera:</p>
+<pre class="notranslate"><code class="notranslate">sudo docker run --runtime nvidia -it --rm --network host \
+ --volume ~/nvdli-data:/nvdli-nano/data \
+ --volume /tmp/argus_socket:/tmp/argus_socket \
+ --device /dev/video0 \ 
+ nvcr.io/nvidia/dli/dli-nano-ai:v2.0.1-r32.6.1
+</code></pre>
+<p>It gets error!</p>
+<pre class="notranslate"><code class="notranslate">docker: Error response from daemon: failed to create shim: OCI runtime create failed: container_linux.go:380: starting container process caused: error adding seccomp filter rule for syscall clone3: permission denied: unknown.
+</code></pre>
+<p>Make sure current docker version:</p>
+<pre class="notranslate"><code class="notranslate">sudo docker version
+Client:
+ Version:           20.10.7
+ API version:       1.41
+ Go version:        go1.13.8
+ Git commit:        20.10.7-0ubuntu5~18.04.3
+ Built:             Mon Nov  1 01:04:31 2021
+ OS/Arch:           linux/arm64
+ Context:           default
+ Experimental:      true
+
+Server:
+ Engine:
+  Version:          20.10.7
+  API version:      1.41 (minimum version 1.12)
+  Go version:       go1.13.8
+  Git commit:       20.10.7-0ubuntu5~18.04.3
+  Built:            Fri Oct 22 00:57:37 2021
+  OS/Arch:          linux/arm64
+  Experimental:     false
+ containerd:
+  Version:          1.5.5-0ubuntu3~18.04.2
+  GitCommit:        
+ runc:
+  Version:          1.0.1-0ubuntu2~18.04.1
+  GitCommit:        
+ docker-init:
+  Version:          0.19.0
+  GitCommit:        
+</code></pre>
+<p>Suggested instruction for fixing the issue is <a href="https://forums.developer.nvidia.com/t/docker-isnt-working-after-apt-upgrade/195213/7" rel="nofollow">here</a></p>
+<pre class="notranslate"><code class="notranslate">wget https://launchpad.net/ubuntu/+source/docker.io/20.10.2-0ubuntu1~18.04.2/+build/21335731/+files/docker.io_20.10.2-0ubuntu1~18.04.2_arm64.
+deb
+sudo dpkg -i docker.io_20.10.2-0ubuntu1~18.04.2_arm64.deb
+rm docker.io_20.10.2-0ubuntu1~18.04.2_arm64.deb
+sudo apt install containerd=1.5.2-0ubuntu1~18.04.3
+</code></pre>
+<p>Pin the docker version for future upgrade.</p>
+<pre class="notranslate"><code class="notranslate">sudo nano /etc/apt/preferences
+
+Package: docker.io 73
+Pin: version 20.10.2*
+Pin-Priority: 1001
+
+Package: containerd
+Pin: version 1.5.2*
+Pin-Priority: 1001
+</code></pre>
+<p>However, <code class="notranslate">sudo apt install containerd=1.5.2-0ubuntu1~18.04.3</code> gets error</p>
+<pre class="notranslate"><code class="notranslate">E: Version '1.5.2-0ubuntu1~18.04.3' for 'containerd' was not found
+</code></pre>
+<p>Here the docker version is 20.10.2 for both client and server</p>
+<pre class="notranslate"><code class="notranslate">isudo docker version
+Client:
+ Version:           20.10.2
+ API version:       1.41
+ Go version:        go1.13.8
+ Git commit:        20.10.2-0ubuntu1~18.04.2
+ Built:             Tue Mar 30 21:35:54 2021
+ OS/Arch:           linux/arm64
+ Context:           default
+ Experimental:      true
+
+Server:
+ Engine:
+  Version:          20.10.2
+  API version:      1.41 (minimum version 1.12)
+  Go version:       go1.13.8
+  Git commit:       20.10.2-0ubuntu1~18.04.2
+  Built:            Mon Mar 29 19:27:41 2021
+  OS/Arch:          linux/arm64
+  Experimental:     false
+ containerd:
+  Version:          1.5.5-0ubuntu3~18.04.2
+  GitCommit:        
+ runc:
+  Version:          1.0.1-0ubuntu2~18.04.1
+  GitCommit:        
+ docker-init:
+  Version:          0.19.0
+  GitCommit:    
+</code></pre>
+<p>But there still is the issue. At least I thoung at this point. So I try downgrading to docker v19 based on <a href="https://github.com/dusty-nv/jetson-containers/issues/108#issuecomment-962597353" data-hovercard-type="issue" data-hovercard-url="/dusty-nv/jetson-containers/issues/108/hovercard">this issue</a></p>
+<pre class="notranslate"><code class="notranslate">sudo dpkg -i docker.io_19.03.6-0ubuntu1~18.04.3_arm64.deb
+dpkg: warning: downgrading docker.io from 20.10.2-0ubuntu1~18.04.2 to 19.03.6-0ubuntu1~18.04.3
+(Reading database ... 179588 files and directories currently installed.)
+Preparing to unpack docker.io_19.03.6-0ubuntu1~18.04.3_arm64.deb ...
+Unpacking docker.io (19.03.6-0ubuntu1~18.04.3) over (20.10.2-0ubuntu1~18.04.2) ...
+dpkg: dependency problems prevent configuration of docker.io:
+ containerd (1.5.5-0ubuntu3~18.04.2) breaks docker.io (&lt;&lt; 19.03.13-0ubuntu4) and is installed.
+  Version of docker.io to be configured is 19.03.6-0ubuntu1~18.04.3.
+
+dpkg: error processing package docker.io (--install):
+ dependency problems - leaving unconfigured
+Processing triggers for man-db (2.8.3-2ubuntu0.1) ...
+Errors were encountered while processing:
+ docker.io
+</code></pre>
+<p>Error happened. Looks that only client downgraded to 19.03.6</p>
+<pre class="notranslate"><code class="notranslate">sudo docker version
+Client:
+ Version:           19.03.6
+ API version:       1.40
+ Go version:        go1.12.17
+ Git commit:        369ce74a3c
+ Built:             Fri Dec 18 12:25:49 2020
+ OS/Arch:           linux/arm64
+ Experimental:      false
+
+Server:
+ Engine:
+  Version:          20.10.2
+  API version:      1.41 (minimum version 1.12)
+  Go version:       go1.13.8
+  Git commit:       20.10.2-0ubuntu1~18.04.2
+  Built:            Mon Mar 29 19:27:41 2021
+  OS/Arch:          linux/arm64
+  Experimental:     false
+ containerd:
+  Version:          1.5.5-0ubuntu3~18.04.2
+  GitCommit:        
+ runc:
+  Version:          1.0.1-0ubuntu2~18.04.1
+  GitCommit:        
+ docker-init:
+  Version:          0.18.0
+  GitCommit: 
+</code></pre>
+<p>I upgraded the docker(client) again and then get this:</p>
+<pre class="notranslate"><code class="notranslate">sudo docker version
+Client:
+ Version:           20.10.2
+ API version:       1.41
+ Go version:        go1.13.8
+ Git commit:        20.10.2-0ubuntu1~18.04.2
+ Built:             Tue Mar 30 21:35:54 2021
+ OS/Arch:           linux/arm64
+ Context:           default
+ Experimental:      true
+
+Server:
+ Engine:
+  Version:          20.10.2
+  API version:      1.41 (minimum version 1.12)
+  Go version:       go1.13.8
+  Git commit:       20.10.2-0ubuntu1~18.04.2
+  Built:            Mon Mar 29 19:27:41 2021
+  OS/Arch:          linux/arm64
+  Experimental:     false
+ containerd:
+  Version:          1.5.5-0ubuntu3~18.04.2
+  GitCommit:        
+ runc:
+  Version:          1.0.1-0ubuntu2~18.04.1
+  GitCommit:        
+ docker-init:
+  Version:          0.19.0
+  GitCommit:        
+</code></pre>
+<p>Now the container started working. The suggested bugfix procedure includes downgrading <code class="notranslate">containerd</code> to 1.5.2 but it worked without it.</p>
+<pre class="notranslate"><code class="notranslate">sudo docker run --runtime nvidia -it --rm --network host  --volume ~/nvdli-data:/nvdli-nano/data  --volume /tmp/argus_socket:/tmp/argus_socket  --device /dev/video0 nvcr.io/nvidia/dli/dli-nano-ai:v2.0.1-r32.6.1
+allow 10 sec for JupyterLab to start @ http://192.168.68.101:8888 (password dlinano)
+JupterLab logging location:  /var/log/jupyter.log  (inside the container)
+root@masaino-desktop:/nvdli-nano#
+</code></pre>
+<p>You can now connect to the JupyterLab.  After logging in the JypyterLab, Follow the Getting Started.</p>
+<p>Note: Looks that L4T ML Container is preinstalled one, try next time!!!</p>
+<h1>Install trt_pose</h1>
+<p><a href="https://github.com/NVIDIA-AI-IOT/trt_pose">https://github.com/NVIDIA-AI-IOT/trt_pose</a></p>
+<h2>PyTorch pip wheels</h2>
+<p>You will work <strong>in</strong> the JypiterLab terminal</p>
+<p>Dependencies</p>
+<p>Python 3.6</p>
+<pre class="notranslate"><code class="notranslate">wget https://nvidia.box.com/shared/static/p57jwntv436lfrd78inwl7iml6p13fzh.whl -O torch-1.8.0-cp36-cp36m-linux_aarch64.whl
+sudo apt-get install python3-pip libopenblas-base libopenmpi-dev libomp-dev
+pip3 install Cython
+pip3 install numpy torch-1.8.0-cp36-cp36m-linux_aarch64.whl
+</code></pre>
+<p>If you get this error:</p>
+<pre class="notranslate"><code class="notranslate">apt-get install libopenmpi-dev  
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+E: Unable to locate package libopenmpi-dev
+</code></pre>
+<p>Do <code class="notranslate">apt-get update</code></p>
+<p>!!! You may want to increase swap size here. Following process can be very heavy !!!</p>
+<hr>
+<h1>Others</h1>
+<h2>NVIDIA L4T PyTorch</h2>
+<p>Choose right version and pull the container</p>
+<p>JetPack 4.6 (L4T R32.6.1)</p>
+<ul>
+<li>l4t-pytorch:r32.6.1-pth1.9-py3</li>
+<li>PyTorch v1.9.0</li>
+<li>torchvision v0.10.0</li>
+<li>torchaudio v0.9.0</li>
+</ul>
+<pre class="notranslate"><code class="notranslate">sudo docker pull nvcr.io/nvidia/l4t-pytorch:r32.6.1-pth1.9-py3
+</code></pre>
+<pre class="notranslate"><code class="notranslate">sudo docker run -it --rm --runtime nvidia --network host nvcr.io/nvidia/l4t-pytorch:r32.6.1-pth1.9-py3
+</code></pre>
+<h2>NVIDIA L4T ML</h2>
+<p>JetPack 4.6 (L4T R32.6.1)</p>
+<p>l4t-ml:r32.6.1-py3</p>
+<ul>
+<li>TensorFlow 1.15.5</li>
+<li>PyTorch v1.9.0</li>
+<li>torchvision v0.10.0</li>
+<li>torchaudio v0.9.0</li>
+<li>onnx 1.8.0</li>
+<li>CuPy 9.2.0</li>
+<li>numpy 1.19.5</li>
+<li>numba 0.53.1</li>
+<li>OpenCV 4.5.0 (with CUDA)</li>
+<li>pandas 1.1.5</li>
+<li>scipy 1.5.4</li>
+<li>scikit-learn 0.23.2</li>
+<li>JupyterLab 2.2.9</li>
+</ul>
+<pre class="notranslate"><code class="notranslate">
+</code></pre>
+<section data-footnotes="" class="footnotes"><h2 id="footnote-label" class="sr-only">Footnotes</h2>
+<ol>
+<li id="user-content-fn-1-d5087163f271f6b7f4500eac059d54f0">
+<p>Is this right command? <a href="#user-content-fnref-1-d5087163f271f6b7f4500eac059d54f0" data-footnote-backref="" aria-label="Back to content" class="data-footnote-backref"><g-emoji class="g-emoji" alias="leftwards_arrow_with_hook" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/21a9.png">↩</g-emoji></a></p>
+</li>
+</ol>
+</section>
+
+
+
+</body>
+
+</html>
+
+<style>
+	.markdown-body {
+		box-sizing: border-box;
+		min-width: 200px;
+		max-width: 980px;
+		margin: 0 auto;
+		padding: 45px;
+	}
+
+	@media (max-width: 767px) {
+		.markdown-body {
+			padding: 30px;
+		}
+	}
+</style>
