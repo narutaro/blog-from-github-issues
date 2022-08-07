@@ -72,7 +72,7 @@
 <p>Create directory</p>
 <pre class="notranslate"><code class="notranslate">mkdir ~/nvdli-data
 </code></pre>
-<p>Make sure your JetPack version<sup><a href="#user-content-fn-1-d5087163f271f6b7f4500eac059d54f0" id="user-content-fnref-1-d5087163f271f6b7f4500eac059d54f0" data-footnote-ref="" aria-describedby="footnote-label">1</a></sup></p>
+<p>Make sure your JetPack version<sup><a href="#user-content-fn-1-d3fa54101bfd2ccdb617b09b87d1d5e8" id="user-content-fnref-1-d3fa54101bfd2ccdb617b09b87d1d5e8" data-footnote-ref="" aria-describedby="footnote-label">1</a></sup></p>
 <pre class="notranslate"><code class="notranslate">sudo apt-cache show nvidia-jetpack
 </code></pre>
 <p>My version looks <code class="notranslate">4.6-b199</code>.</p>
@@ -269,58 +269,16 @@ root@masaino-desktop:/nvdli-nano#
 <p>Dependencies</p>
 <p>Python 3.6</p>
 <pre class="notranslate"><code class="notranslate">wget https://nvidia.box.com/shared/static/p57jwntv436lfrd78inwl7iml6p13fzh.whl -O torch-1.8.0-cp36-cp36m-linux_aarch64.whl
+sudo apt-get update
 sudo apt-get install python3-pip libopenblas-base libopenmpi-dev libomp-dev
 pip3 install Cython
 pip3 install numpy torch-1.8.0-cp36-cp36m-linux_aarch64.whl
 </code></pre>
-<p>If you get this error:</p>
-<pre class="notranslate"><code class="notranslate">apt-get install libopenmpi-dev  
-Reading package lists... Done
-Building dependency tree       
-Reading state information... Done
-E: Unable to locate package libopenmpi-dev
-</code></pre>
-<p>Do <code class="notranslate">apt-get update</code></p>
 <p>!!! You may want to increase swap size here. Following process can be very heavy !!!</p>
-<hr>
-<h1>Others</h1>
-<h2>NVIDIA L4T PyTorch</h2>
-<p>Choose right version and pull the container</p>
-<p>JetPack 4.6 (L4T R32.6.1)</p>
-<ul>
-<li>l4t-pytorch:r32.6.1-pth1.9-py3</li>
-<li>PyTorch v1.9.0</li>
-<li>torchvision v0.10.0</li>
-<li>torchaudio v0.9.0</li>
-</ul>
-<pre class="notranslate"><code class="notranslate">sudo docker pull nvcr.io/nvidia/l4t-pytorch:r32.6.1-pth1.9-py3
-</code></pre>
-<pre class="notranslate"><code class="notranslate">sudo docker run -it --rm --runtime nvidia --network host nvcr.io/nvidia/l4t-pytorch:r32.6.1-pth1.9-py3
-</code></pre>
-<h2>NVIDIA L4T ML</h2>
-<p>JetPack 4.6 (L4T R32.6.1)</p>
-<p>l4t-ml:r32.6.1-py3</p>
-<ul>
-<li>TensorFlow 1.15.5</li>
-<li>PyTorch v1.9.0</li>
-<li>torchvision v0.10.0</li>
-<li>torchaudio v0.9.0</li>
-<li>onnx 1.8.0</li>
-<li>CuPy 9.2.0</li>
-<li>numpy 1.19.5</li>
-<li>numba 0.53.1</li>
-<li>OpenCV 4.5.0 (with CUDA)</li>
-<li>pandas 1.1.5</li>
-<li>scipy 1.5.4</li>
-<li>scikit-learn 0.23.2</li>
-<li>JupyterLab 2.2.9</li>
-</ul>
-<pre class="notranslate"><code class="notranslate">
-</code></pre>
 <section data-footnotes="" class="footnotes"><h2 id="footnote-label" class="sr-only">Footnotes</h2>
 <ol>
-<li id="user-content-fn-1-d5087163f271f6b7f4500eac059d54f0">
-<p>Is this right command? <a href="#user-content-fnref-1-d5087163f271f6b7f4500eac059d54f0" data-footnote-backref="" aria-label="Back to content" class="data-footnote-backref"><g-emoji class="g-emoji" alias="leftwards_arrow_with_hook" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/21a9.png">↩</g-emoji></a></p>
+<li id="user-content-fn-1-d3fa54101bfd2ccdb617b09b87d1d5e8">
+<p>Is this right command? <a href="#user-content-fnref-1-d3fa54101bfd2ccdb617b09b87d1d5e8" data-footnote-backref="" aria-label="Back to content" class="data-footnote-backref"><g-emoji class="g-emoji" alias="leftwards_arrow_with_hook" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/21a9.png">↩</g-emoji></a></p>
 </li>
 </ol>
 </section>
