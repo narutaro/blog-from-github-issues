@@ -72,24 +72,24 @@
 <p>Create directory</p>
 <pre class="notranslate"><code class="notranslate">mkdir ~/nvdli-data
 </code></pre>
-<p>Make sure your JetPack version<sup><a href="#user-content-fn-1-d3fa54101bfd2ccdb617b09b87d1d5e8" id="user-content-fnref-1-d3fa54101bfd2ccdb617b09b87d1d5e8" data-footnote-ref="" aria-describedby="footnote-label">1</a></sup></p>
+<p>Make sure your JetPack version<sup><a href="#user-content-fn-1-5a1ab797f64b326e366d5eb5b0298d5a" id="user-content-fnref-1-5a1ab797f64b326e366d5eb5b0298d5a" data-footnote-ref="" aria-describedby="footnote-label">1</a></sup></p>
 <pre class="notranslate"><code class="notranslate">sudo apt-cache show nvidia-jetpack
 </code></pre>
 <p>My version looks <code class="notranslate">4.6-b199</code>.</p>
 <p>Pick up the right container version from the table in <a href="https://catalog.ngc.nvidia.com/orgs/nvidia/teams/dli/containers/dli-nano-ai" rel="nofollow">the page</a>. JetPack Release <code class="notranslate">4.6</code> is Container Version Tag <code class="notranslate">v2.0.1-r32.6.1</code>.</p>
 <p>Pull and run the container</p>
 <p>USB camera:</p>
-<pre class="notranslate"><code class="notranslate">sudo docker run --runtime nvidia -it --rm --network host \
+<pre class="notranslate"><code class="notranslate">sudo docker run --runtime nvidia -it  --network host \
  --volume ~/nvdli-data:/nvdli-nano/data \
- --device /dev/video1 \ 
- nvcr.io/nvidia/dli/dli-nano-ai:v2.0.1-r32.6.1
+ --device /dev/video1 \
+nvcr.io/nvidia/dli/dli-nano-ai:v2.0.1-r32.6.1
 </code></pre>
 <p>CSI camera:</p>
-<pre class="notranslate"><code class="notranslate">sudo docker run --runtime nvidia -it --rm --network host \
+<pre class="notranslate"><code class="notranslate">sudo docker run --runtime nvidia -it --network host \
  --volume ~/nvdli-data:/nvdli-nano/data \
  --volume /tmp/argus_socket:/tmp/argus_socket \
- --device /dev/video0 \ 
- nvcr.io/nvidia/dli/dli-nano-ai:v2.0.1-r32.6.1
+ --device /dev/video0 \
+nvcr.io/nvidia/dli/dli-nano-ai:v2.0.1-r32.6.1
 </code></pre>
 <p>It gets error!</p>
 <pre class="notranslate"><code class="notranslate">docker: Error response from daemon: failed to create shim: OCI runtime create failed: container_linux.go:380: starting container process caused: error adding seccomp filter rule for syscall clone3: permission denied: unknown.
@@ -277,8 +277,8 @@ pip3 install numpy torch-1.8.0-cp36-cp36m-linux_aarch64.whl
 <p>!!! You may want to increase swap size here. Following process can be very heavy !!!</p>
 <section data-footnotes="" class="footnotes"><h2 id="footnote-label" class="sr-only">Footnotes</h2>
 <ol>
-<li id="user-content-fn-1-d3fa54101bfd2ccdb617b09b87d1d5e8">
-<p>Is this right command? <a href="#user-content-fnref-1-d3fa54101bfd2ccdb617b09b87d1d5e8" data-footnote-backref="" aria-label="Back to content" class="data-footnote-backref"><g-emoji class="g-emoji" alias="leftwards_arrow_with_hook" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/21a9.png">↩</g-emoji></a></p>
+<li id="user-content-fn-1-5a1ab797f64b326e366d5eb5b0298d5a">
+<p>Is this right command? <a href="#user-content-fnref-1-5a1ab797f64b326e366d5eb5b0298d5a" data-footnote-backref="" aria-label="Back to content" class="data-footnote-backref"><g-emoji class="g-emoji" alias="leftwards_arrow_with_hook" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/21a9.png">↩</g-emoji></a></p>
 </li>
 </ol>
 </section>
