@@ -1,0 +1,175 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y0XWZZ2L8J"></script>
+	<script>
+	 window.dataLayer = window.dataLayer || [];
+	 function gtag(){dataLayer.push(arguments);}
+	 gtag('js', new Date());
+	
+	 gtag('config', 'G-Y0XWZZ2L8J');
+	</script>
+
+  <meta charset="utf-8">
+  <title>Jetson Nano Setup</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+  <meta property="og:title" content="Jetson Nano Setup">
+	<meta property="og:description" content="A blog genarated by Github issues">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https:&#x2F;&#x2F;github.com&#x2F;narutaro&#x2F;blog&#x2F;issues&#x2F;23">
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/4873581?v=4">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:card" content="summary_large_image">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="/blog/css/normalize.css">
+  <link rel="stylesheet" href="/blog/css/main.css">
+
+  <!-- Github flavored CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown.min.css">
+
+	<!-- User CSS -->
+  <link rel="stylesheet" href="/blog/css/blog.css">
+
+  <!-- Fontawsome -->
+	<script src="https://kit.fontawesome.com/a1763a7d6f.js" crossorigin="anonymous"></script>
+
+	<!--
+  <meta name="theme-color" content="#fafafa">
+	-->
+</head>
+
+<body class="markdown-body">
+
+	<!--	<div style="margin-bottom: 64px";> -->
+	<h1 style="font-weight: 900; margin-bottom: 5px">Jetson Nano Setup
+		<span style="float: right; --color-accent-fg: initial">
+			<a href="https:&#x2F;&#x2F;github.com&#x2F;narutaro&#x2F;blog&#x2F;issues&#x2F;23"><i class="fa-solid fa-gear"></i></a>
+		</span>
+	</h1>
+	  <div style="margin-bottom: 72px">
+		  <i class="fa-regular fa-calendar-days"></i> Aug 7th, 2022
+		</div>
+		<!-- 	</div> -->
+
+	<!--  three brakets print HTML as is -->
+	<h2>Expand the swap</h2>
+<p>Use this shell script<br>
+<a href="https://github.com/JetsonHacksNano/installSwapfile">https://github.com/JetsonHacksNano/installSwapfile</a></p>
+<pre class="notranslate"><code class="notranslate">#!/bin/bash
+# Copyright 2017-2019 JetsonHacks
+# MIT License
+# Create a swap file and set up permissions
+# If a parameter is passed, it should be the place to create the swapfile
+set -e
+SWAPDIRECTORY="/mnt"
+# Ubuntu recommends 6GB for 4GB of memory when using suspend
+# You can use 1 or 2 if need be
+SWAPSIZE=6
+AUTOMOUNT="Y"
+function usage
+{
+    echo "usage: installSwapFile [[[-d directory ] [-s size] -a] | [-h]]"
+    echo "  -d | --dir &lt;directoryname&gt;   Directory to place swapfile ( default: /mnt)"
+    echo "  -s | --size &lt;gigabytes&gt; (default: 6)"
+    echo "  -a | --auto  Enable swap on boot in /etc/fstab (default: Y)"
+    echo "  -h | --help  This message"
+}
+
+while [ "$1" != "" ]; do
+    case $1 in
+        -d | --dir )            shift
+                                SWAPDIRECTORY=$1
+                                ;;
+        -s | --size )           shift 
+				SWAPSIZE=$1
+                                ;;
+        -a | --auto )           shift
+				AUTOMOUNT=$1
+				;;
+        -h | --help )           usage
+                                exit
+                                ;;
+        * )                     usage
+                                exit 1
+    esac
+    shift
+done
+
+echo "Creating Swapfile at: " $SWAPDIRECTORY
+echo "Swapfile Size: " $SWAPSIZE"G"
+echo "Automount: " $AUTOMOUNT
+
+#Create a swapfile for Ubuntu at the current directory location
+sudo fallocate -l $SWAPSIZE"G" $SWAPDIRECTORY"/swapfile"
+cd $SWAPDIRECTORY
+#List out the file
+ls -lh swapfile
+# Change permissions so that only root can use it
+sudo chmod 600 swapfile
+#List out the file
+ls -lh swapfile
+#Set up the Linux swap area
+sudo mkswap swapfile
+#Now start using the swapfile
+sudo swapon swapfile
+#Show that it's now being used
+swapon -s
+
+if [ "$AUTOMOUNT" = "Y" ]; then
+	echo "Modifying /etc/fstab to enable on boot"
+        SWAPLOCATION=$SWAPDIRECTORY"/swapfile"
+        echo $SWAPLOCATION
+	sudo sh -c 'echo "'$SWAPLOCATION' swap swap defaults 0 0" &gt;&gt; /etc/fstab'
+fi
+
+echo "Swap file has been created"
+echo "Reboot to make sure changes are in effect"
+</code></pre>
+<h3>Before</h3>
+<pre class="notranslate"><code class="notranslate">free -m
+              total        used        free      shared  buff/cache   available
+Mem:           3956        2905         246          89         804         825
+Swap:          1978         186        1791
+</code></pre>
+<h3>After</h3>
+<pre class="notranslate"><code class="notranslate">free -m
+              total        used        free      shared  buff/cache   available
+Mem:           3956        2906         185          89         863         824
+Swap:          8122         188        7933
+</code></pre>
+<hr>
+<p><a href="https://reboooot.net/post/how-to-get-memswap-value-in-docker-container/" rel="nofollow">https://reboooot.net/post/how-to-get-memswap-value-in-docker-container/</a></p>
+<p>Jetson Nanoのswap領域の追加<br>
+<a href="https://zenn.dev/sumire0204/articles/43b843492afcfd" rel="nofollow">https://zenn.dev/sumire0204/articles/43b843492afcfd</a></p>
+
+
+
+</body>
+
+</html>
+
+<style>
+	.markdown-body {
+		box-sizing: border-box;
+		min-width: 200px;
+		max-width: 980px;
+		margin: 0 auto;
+		padding: 45px;
+	}
+
+	@media (max-width: 767px) {
+		.markdown-body {
+			padding: 30px;
+		}
+	}
+</style>
