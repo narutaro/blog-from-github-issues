@@ -1,0 +1,156 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y0XWZZ2L8J"></script>
+	<script>
+	 window.dataLayer = window.dataLayer || [];
+	 function gtag(){dataLayer.push(arguments);}
+	 gtag('js', new Date());
+	
+	 gtag('config', 'G-Y0XWZZ2L8J');
+	</script>
+
+  <meta charset="utf-8">
+  <title>second</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+  <meta property="og:title" content="second">
+	<meta property="og:description" content="A blog genarated by Github issues">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https:&#x2F;&#x2F;github.com&#x2F;narutaro&#x2F;blog&#x2F;issues&#x2F;26">
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/4873581?v=4">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:card" content="summary_large_image">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="/blog/css/normalize.css">
+  <link rel="stylesheet" href="/blog/css/main.css">
+
+  <!-- Github flavored CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown.min.css">
+
+	<!-- User CSS -->
+  <link rel="stylesheet" href="/blog/css/blog.css">
+
+  <!-- Fontawsome -->
+	<script src="https://kit.fontawesome.com/a1763a7d6f.js" crossorigin="anonymous"></script>
+
+	<!--
+  <meta name="theme-color" content="#fafafa">
+	-->
+</head>
+
+<body class="markdown-body">
+
+	<!--	<div style="margin-bottom: 64px";> -->
+	<h1 style="font-weight: 900; margin-bottom: 5px">second
+		<span style="float: right; --color-accent-fg: initial">
+			<a href="https:&#x2F;&#x2F;github.com&#x2F;narutaro&#x2F;blog&#x2F;issues&#x2F;26"><i class="fa-solid fa-gear"></i></a>
+		</span>
+	</h1>
+	  <div style="margin-bottom: 72px">
+		  <i class="fa-regular fa-calendar-days"></i> Aug 8th, 2022
+		</div>
+		<!-- 	</div> -->
+
+	<!--  three brakets print HTML as is -->
+	<h2>Use trt_pose on Jetson Nano without Jupyter notebook</h2>
+<p>!!! Increase Jetson Nano swap first !!!</p>
+<h2>Install pytorch</h2>
+<p>Replace from <code class="notranslate">cp36</code> to <code class="notranslate">cp37</code></p>
+<pre class="notranslate"><code class="notranslate">wget https://nvidia.box.com/shared/static/p57jwntv436lfrd78inwl7iml6p13fzh.whl -O torch-1.8.0-cp37-cp37m-linux_aarch64.whl
+sudo apt-get update
+sudo apt-get install python3-pip libopenblas-base libopenmpi-dev libomp-dev
+pip3 install Cython
+pip3 install numpy torch-1.8.0-cp37-cp37m-linux_aarch64.whl
+</code></pre>
+<h2>Install touchvision</h2>
+<pre class="notranslate"><code class="notranslate">sudo apt-get install libjpeg-dev zlib1g-dev libpython3-dev libavcodec-dev libavformat-dev libswscale-dev
+git clone --branch v0.9.0 https://github.com/pytorch/vision torchvision   # see below for version of torchvision to download
+$ cd torchvision
+$ export BUILD_VERSION=0.9.0  # where 0.x.0 is the torchvision version  
+$ python3 setup.py install --user
+$ cd ../  # attempting to load torchvision from build dir will result in import error
+</code></pre>
+<p><g-emoji class="g-emoji" alias="coffee" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2615.png">☕️</g-emoji> This installation takes more than 15min. Have a coffee break.</p>
+<h2>Verify the installation</h2>
+<pre class="notranslate"><code class="notranslate">python3 # launch python shell
+
+import torch
+print(torch.__version__)
+print('CUDA available: ' + str(torch.cuda.is_available()))
+print('cuDNN version: ' + str(torch.backends.cudnn.version()))
+a = torch.cuda.FloatTensor(2).zero_()
+print('Tensor a = ' + str(a))
+b = torch.randn(2).cuda()
+print('Tensor b = ' + str(b))
+c = a + b
+print('Tensor c = ' + str(c))
+</code></pre>
+<pre class="notranslate"><code class="notranslate">import torchvision
+print(torchvision.__version__)
+</code></pre>
+<h3>Trouble shooting</h3>
+<ul>
+<li>
+<p>In order to <code class="notranslate">import torchvision</code>, you need to use python3.7<br>
+<a href="https://medium.com/@jeethu.samsani/upgrade-python-3-5-to-3-7-in-ubuntu-a1d4347b6a3" rel="nofollow">https://medium.com/@jeethu.samsani/upgrade-python-3-5-to-3-7-in-ubuntu-a1d4347b6a3</a></p>
+</li>
+<li>
+<p><code class="notranslate">ModuleNotFoundError: No module named 'pip._internal'</code><br>
+<a href="https://qiita.com/seigot/items/add5668643576a61fd96" rel="nofollow">https://qiita.com/seigot/items/add5668643576a61fd96</a></p>
+</li>
+</ul>
+<h2>torch2trt</h2>
+<pre class="notranslate"><code class="notranslate">pip3 install nvidia-pyindex
+pip3 install nvidia-tensorrt
+</code></pre>
+<pre class="notranslate"><code class="notranslate">git clone https://github.com/NVIDIA-AI-IOT/torch2trt
+cd torch2trt
+python3 setup.py install --plugins 
+</code></pre>
+<h2>Install trt_pose</h2>
+<pre class="notranslate"><code class="notranslate">pip3 install --upgrade pip
+pip3 install tqdm cython pycocotools
+sudo apt-get install python3-matplotlib
+</code></pre>
+<pre class="notranslate"><code class="notranslate">git clone https://github.com/NVIDIA-AI-IOT/trt_pose
+cd trt_pose
+sudo python3 setup.py install
+</code></pre>
+<p><g-emoji class="g-emoji" alias="coffee" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2615.png">☕️</g-emoji> This installation takes more than 15min. Have a coffee break.</p>
+<pre class="notranslate"><code class="notranslate">git clone https://github.com/MACNICA-CLAVIS-NV/trt_pose_demo
+cd trt_pose_demo
+</code></pre>
+<h3>Download models</h3>
+<p>Put the model <code class="notranslate">resnet18_baseline_att_224x224_A</code> and <code class="notranslate">densenet121_baseline_att_256x256_B</code> in</p>
+
+
+
+</body>
+
+</html>
+
+<style>
+	.markdown-body {
+		box-sizing: border-box;
+		min-width: 200px;
+		max-width: 980px;
+		margin: 0 auto;
+		padding: 45px;
+	}
+
+	@media (max-width: 767px) {
+		.markdown-body {
+			padding: 30px;
+		}
+	}
+</style>
