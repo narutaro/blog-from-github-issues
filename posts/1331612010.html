@@ -66,7 +66,11 @@
 </code></pre>
 <pre class="notranslate"><code class="notranslate">sudo docker pull nvcr.io/nvidia/l4t-ml:r32.5.0-py3
 </code></pre>
+<p>Just create a container. Not run.</p>
 <pre class="notranslate"><code class="notranslate">sudo docker create -it --name my_pose --gpus all --network host -e DISPLAY=$DISPLAY -v /tmp/.X11-unix/:/tmp/.X11-unix --device /dev/video1:/dev/video1:mwr -v /home/masaino/work-pose:/work nvcr.io/nvidia/l4t-ml:r32.5.0-py3
+</code></pre>
+<p>Run the container</p>
+<pre class="notranslate"><code class="notranslate">sudo docker start -i my_pose
 </code></pre>
 
 
