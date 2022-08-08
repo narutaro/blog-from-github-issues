@@ -80,7 +80,9 @@ $ python3 setup.py install --user
 $ cd ../  # attempting to load torchvision from build dir will result in import error
 </code></pre>
 <h2>Verify the installation</h2>
-<pre class="notranslate"><code class="notranslate">import torch
+<pre class="notranslate"><code class="notranslate">python3 # launch python shell
+
+import torch
 print(torch.__version__)
 print('CUDA available: ' + str(torch.cuda.is_available()))
 print('cuDNN version: ' + str(torch.backends.cudnn.version()))
