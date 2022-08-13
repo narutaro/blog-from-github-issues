@@ -96,6 +96,23 @@
 <li>Send reset as MQTT to Events</li>
 </ul>
 <h2>Procedure</h2>
+<h3>Set timezone in container</h3>
+<p>Overwrite <code class="notranslate">/etc/localtime</code> in the container with <code class="notranslate">/usr/share/zoneinfo/Japan</code> in the host.</p>
+<h3>Install trt_pose</h3>
+<ol>
+<li>Install necessary stuffs refering the URLs above</li>
+<li>Use <code class="notranslate">ipynb</code> file</li>
+<li>Patch <code class="notranslate">/work/torch2trt/trt_pose/trt_pose/parse_objects.py</code> as follows</li>
+</ol>
+<div class="highlight highlight-source-diff"><pre>                     x = round(float(peak[1]) * width)
+                     y = round(float(peak[0]) * height)
+                     cv2.circle(image, (x, y), 3, color, 2)
+<span class="pl-mi1"><span class="pl-mi1">+</span>                    with open("circle.log", "a+") as f:</span>
+<span class="pl-mi1"><span class="pl-mi1">+</span>                        ts = datetime.datetime.now().isoformat()</span>
+<span class="pl-mi1"><span class="pl-mi1">+</span>                        tis = tis = int(time.time())</span>
+<span class="pl-mi1"><span class="pl-mi1">+</span>                        position = { "ts": ts, "tis": tis, "cid": j+1, "x": x, "y": x }</span>
+<span class="pl-mi1"><span class="pl-mi1">+</span>                        f.write(json.dumps(position) + "\n")</span>
+</pre></div>
 <h3>Install aws cli</h3>
 <p><a href="https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/cli-chap-getting-started.html" rel="nofollow">https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/cli-chap-getting-started.html</a></p>
 <p>Make sure you select <strong>Linux</strong> section and <strong>Linux ARM</strong> tab</p>
@@ -181,6 +198,15 @@ apt-get install mosquitto-clients
 <li>"right_ankle",</li>
 <li>"neck"</li>
 </ol>
+<pre class="notranslate"><code class="notranslate">     
+224  x   0
+---------+ 0
+         |
+         | y
+         |
+         | 224
+
+</code></pre>
 
 
 
