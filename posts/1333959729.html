@@ -101,6 +101,24 @@
 <p>You need install some packages before run the aws command</p>
 <pre class="notranslate"><code class="notranslate">apt-get install less groff
 </code></pre>
+<h3>Setup a thing</h3>
+<pre class="notranslate"><code class="notranslate">mkdir thing &amp;&amp; cd thing
+
+aws iot create-thing --thing-name jetson
+
+wget https://www.amazontrust.com/repository/AmazonRootCA1.pem
+
+aws iot create-keys-and-certificate \
+--set-as-active \ 
+--certificate-pem-outfile "./device.pem.crt" \
+--public-key-outfile "./public.pem.key" \
+--private-key-outfile "./private.pem.key" \
+&gt; certs-and-keys.json
+
+aws iot attach-policy --policy-name p1 --target $(jq -r .certificateArn certs-and-keys.json)
+</code></pre>
+<h3>Install mosquitto</h3>
+<p><a href="https://mosquitto.org/download/" rel="nofollow">https://mosquitto.org/download/</a></p>
 
 
 
