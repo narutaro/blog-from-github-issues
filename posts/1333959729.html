@@ -84,7 +84,8 @@
 <ul>
 <li>SiteWise with body hierarchy
 <ul>
-<li><a href="https://dev.classmethod.jp/articles/sitewise-monitor-multi-device/" rel="nofollow">https://dev.classmethod.jp/articles/sitewise-monitor-multi-device/</a></li>
+<li><a href="https://dev.classmethod.jp/articles/sitewise-monitor-multi-device/" rel="nofollow">Multiple sensors</a></li>
+<li><a href="https://dev.classmethod.jp/articles/to-sitewise-via-iot-core/" rel="nofollow">IoT Core to SiteWise</a></li>
 </ul>
 </li>
 <li>Timestream + Graphana</li>
@@ -127,6 +128,59 @@ aws iot attach-policy --policy-name p1 --target $(jq -r .certificateArn certs-an
 apt-get update
 apt-get install mosquitto-clients
 </code></pre>
+<h3>Publish test</h3>
+<pre class="notranslate"><code class="notranslate">./shaper.sh ../circle.log.1 | mosquitto_pub --cafile AmazonRootCA1.pem --cert device.pem.crt --key private.pem.key -h a3su8icnk38ik7-ats.iot.ap-northeast-1.amazonaws.com -p 8883 -t pose -i jetson -d -l
+</code></pre>
+<p>You can check the messege coming in the web console</p>
+<h3>Numbering</h3>
+<pre class="notranslate"><code class="notranslate">more human_pose.json 
+{"supercategory": "person", "id": 1, "name": "person", "keypoints": ["nose", "left_eye", "right_eye", "left_ear", "right_ear", "left_shoulder", "right_shoulder", "left_elbow", "right_elbow",
+ "left_wrist", "right_wrist", "left_hip", "right_hip", "left_knee", "right_knee", "left_ankle", "right_ankle", "neck"], "skeleton": [[16, 14], [14, 12], [17, 15], [15, 13], [12, 13], [6, 8],
+ [7, 9], [8, 10], [9, 11], [2, 3], [1, 2], [1, 3], [2, 4], [3, 5], [4, 6], [5, 7], [18, 1], [18, 6], [18, 7], [18, 12], [18, 13]]}
+</code></pre>
+<pre class="notranslate"><code class="notranslate">cat human_pose.json | jq .keypoints
+[
+  "nose",
+  "left_eye",
+  "right_eye",
+  "left_ear",
+  "right_ear",
+  "left_shoulder",
+  "right_shoulder",
+  "left_elbow",
+  "right_elbow",
+  "left_wrist",
+  "right_wrist",
+  "left_hip",
+  "right_hip",
+  "left_knee",
+  "right_knee",
+  "left_ankle",
+  "right_ankle",
+  "neck"
+]
+</code></pre>
+<p>Number and parts mapping is as follows.</p>
+<ol>
+<li>"nose",</li>
+<li>"left_eye",</li>
+<li>"right_eye",</li>
+<li>"left_ear",</li>
+<li>"right_ear",</li>
+<li>"left_shoulder",</li>
+<li>"right_shoulder",</li>
+<li>"left_elbow",</li>
+<li>"right_elbow",</li>
+<li>"left_wrist",</li>
+<li>"right_wrist",</li>
+<li>"left_hip",</li>
+<li>"right_hip",</li>
+<li>"left_knee",</li>
+<li>"right_knee",</li>
+<li>"left_ankle",</li>
+<li>"right_ankle",</li>
+<li>"neck"</li>
+</ol>
 
 
 
