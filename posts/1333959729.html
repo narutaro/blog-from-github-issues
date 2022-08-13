@@ -122,6 +122,11 @@ aws iot attach-policy --policy-name p1 --target $(jq -r .certificateArn certs-an
 <p>You may need to run this before</p>
 <pre class="notranslate"><code class="notranslate">apt-get install software-properties-common
 </code></pre>
+<p>Then</p>
+<pre class="notranslate"><code class="notranslate">apt-add-repository ppa:mosquitto-dev/mosquitto-ppa
+apt-get update
+apt-get install mosquitto-clients
+</code></pre>
 
 
 
