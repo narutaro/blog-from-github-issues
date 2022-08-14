@@ -2,15 +2,30 @@
 <html class="no-js" lang="">
 
 <head>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y0XWZZ2L8J"></script>
+	<script>
+	 window.dataLayer = window.dataLayer || [];
+	 function gtag(){dataLayer.push(arguments);}
+	 gtag('js', new Date());
+	
+	 gtag('config', 'G-Y0XWZZ2L8J');
+	</script>
+
   <meta charset="utf-8">
-  <title></title>
+  <title>AWSのよく使うコマンド</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta property="og:title" content="">
-  <meta property="og:type" content="">
-  <meta property="og:url" content="">
-  <meta property="og:image" content="">
+	<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+  <meta property="og:title" content="AWSのよく使うコマンド">
+	<meta property="og:description" content="A blog genarated by Github issues">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https:&#x2F;&#x2F;github.com&#x2F;narutaro&#x2F;blog&#x2F;issues&#x2F;9">
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/4873581?v=4">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:card" content="summary_large_image">
 
   <link rel="manifest" href="site.webmanifest">
   <link rel="apple-touch-icon" href="icon.png">
@@ -18,10 +33,15 @@
 
   <link rel="stylesheet" href="/blog/css/normalize.css">
   <link rel="stylesheet" href="/blog/css/main.css">
-  <link rel="stylesheet" href="/blog/css/blog.css">
 
   <!-- Github flavored CSS -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown.min.css">
+
+	<!-- User CSS -->
+  <link rel="stylesheet" href="/blog/css/blog.css">
+
+  <!-- Fontawsome -->
+	<script src="https://kit.fontawesome.com/a1763a7d6f.js" crossorigin="anonymous"></script>
 
 	<!--
   <meta name="theme-color" content="#fafafa">
@@ -30,21 +50,31 @@
 
 <body class="markdown-body">
 
-	<h1 class="issue-title">AWSのよく使うコマンド</h1>
+	<!--	<div style="margin-bottom: 64px";> -->
+	<h1 style="font-weight: 900; margin-bottom: 5px">AWSのよく使うコマンド
+		<span style="float: right; --color-accent-fg: initial">
+			<a href="https:&#x2F;&#x2F;github.com&#x2F;narutaro&#x2F;blog&#x2F;issues&#x2F;9"><i class="fa-solid fa-gear"></i></a>
+		</span>
+	</h1>
+	  <div style="margin-bottom: 72px">
+		  <i class="fa-regular fa-calendar-days"></i> Aug 14th, 2022
+		</div>
+		<!-- 	</div> -->
 
 	<!--  three brakets print HTML as is -->
-	<h1>STS</h1>
+	<p>STS</p>
 <ul>
 <li><code class="notranslate">aws sts get-caller-identity</code> - who am I</li>
 <li><code class="notranslate">aws configure list</code> - where am I</li>
+</ul>
+<p>Change region</p>
+<ul>
+<li><code class="notranslate">export AWS_REGION=us-east-1</code></li>
 <li><code class="notranslate">export AWS_DEFAULT_REGION=us-west-2</code></li>
 </ul>
 
-  <script>
-    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
-    ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
-  </script>
-  <script src="https://www.google-analytics.com/analytics.js" async></script>
+
+
 </body>
 
 </html>
@@ -60,7 +90,7 @@
 
 	@media (max-width: 767px) {
 		.markdown-body {
-			padding: 15px;
+			padding: 30px;
 		}
 	}
 </style>
