@@ -75,6 +75,13 @@
 <li>made it <code>markdown</code>
 </li>
 </ul>
+<div class="highlight highlight-source-js"><pre><span class="pl-c">// Octokit.js</span>
+<span class="pl-c">// https://github.com/octokit/core.js#readme</span>
+<span class="pl-k">const</span> <span class="pl-s1">octokit</span> <span class="pl-c1">=</span> <span class="pl-k">new</span> <span class="pl-v">Octokit</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+  <span class="pl-c1">auth</span>: <span class="pl-s">'YOUR-TOKEN'</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span>
+
+<span class="pl-k">await</span> <span class="pl-s1">octokit</span><span class="pl-kos">.</span><span class="pl-en">request</span><span class="pl-kos">(</span><span class="pl-s">'POST /markdown'</span><span class="pl-kos">,</span> <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">)</span></pre></div>
 
 
 
