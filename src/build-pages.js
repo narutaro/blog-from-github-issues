@@ -39,8 +39,8 @@ octokit.rest.issues.listForRepo({
 
   markdown = target_issue.body
   const issue_template = fs.readFileSync("template/post.template.html", "utf8").toString();
-  octokit.rest.markdown.render({"text": markdown, "mode": "gfm"})
-  //octokit.rest.markdown.render({"text": markdown, "mode": "markdown"})
+  // octokit.rest.markdown.render({"text": markdown, "mode": "gfm"})
+  octokit.rest.markdown.render({"text": markdown, "mode": "markdown"})
     .then(issue_html => {
 
       target_issue.issue_html = issue_html
