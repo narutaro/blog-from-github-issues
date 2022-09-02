@@ -39,16 +39,14 @@ octokit.rest.issues.listForRepo({
 
   markdown = target_issue.body
   const issue_template = fs.readFileSync("template/post.template.html", "utf8").toString();
-  // octokit.rest.markdown.render({"text": markdown, "mode": "gfm"})
-  octokit.rest.markdown.render({"text": markdown, "mode": "markdown"})
+  octokit.rest.markdown.render({"text": markdown, "mode": "gfm"})
     .then(issue_html => {
 
       target_issue.issue_html = issue_html
       console.log("target_issue: ", target_issue)
 
       const issue_page = Mustache.render(issue_template, target_issue)
-      console.log('-----------------------------')
-      console.log(issue_page)
+      // console.log(issue_page)
       fs.writeFileSync("posts/" + process.env.target_issue_id + ".html", issue_page, "utf8");
   })
 
