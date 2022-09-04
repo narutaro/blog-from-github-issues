@@ -32,6 +32,7 @@
 
   <!-- Pico classless -->
   <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.classless.min.css">
+  <link rel="stylesheet" href="/blog/css/theme.css">
 
   <!-- starry-night/style/high-contrast.css -->
   <link rel="stylesheet" href="/blog/css/dimmed.css">
@@ -45,19 +46,19 @@
     <nav>
       <ul></ul>
       <ul>
-        <li><a href=".github.io/"><i class="fa-solid fa-list-ol"></i></a></li>
+        <li><a href="../"><i class="fa-solid fa-list-ol"></i></a></li>
         <li><a href="https:&#x2F;&#x2F;github.com&#x2F;narutaro&#x2F;blog&#x2F;issues&#x2F;28"><i class="fa-solid fa-gear"></i></a></li>
       </ul>
     </nav>
     <hgroup>
       <h1><i class="fa-brands fa-github"></i> bf note</h1>
-      <h2><i class="fa-regular fa-calendar-days"></i>Sep 2nd, 2022
+      <h2><i class="fa-regular fa-calendar-days"></i>Sep 4th, 2022
       </h2>
     </hgroup>
   </header>
 
   <main>
-    <h2>Reference</h2>
+    <h1>Reference</h1>
 <p><a href="https://wisteriahill.sakura.ne.jp/CMS/WordPress/2021/03/06/jetson-nano-pose-estimation-resnet-18/" rel="nofollow">text book</a></p>
 <ul>
 <li>docker version 20.10.7 fails to launch the nvidia container. 20.10.2 works</li>
@@ -65,7 +66,7 @@
 </ul>
 <p><a href="https://www.youtube.com/watch?v=y38Mze43w-A" rel="nofollow">Installation video</a></p>
 <p><a href="https://github.com/NVIDIA-AI-IOT/trt_pose/blob/master/tasks/human_pose/live_demo.ipynb">trt_pose  - live_demo.ipynb</a></p>
-<h2>Idea</h2>
+<h1>Idea</h1>
 <p>Why IoT Core</p>
 <ul>
 <li>Bi-redction - command to the device to reset the position, alert to the browser</li>
@@ -90,9 +91,20 @@
 <li>MQTT.js</li>
 <li>Send reset as MQTT to Events</li>
 </ul>
-<h2>Procedure</h2>
-<h3>Set timezone in container</h3>
+<h1>Procedure</h1>
+<h2>Set timezone in container</h2>
 <p>Overwrite <code class="notranslate">/etc/localtime</code> in the container with <code class="notranslate">/usr/share/zoneinfo/Japan</code> in the host.</p>
+<h2>Create container</h2>
+<div class="highlight highlight-source-shell"><pre>sudo docker create -it \
+--name both_camera \
+-p 8888:8888 \
+--gpus all \
+-e DISPLAY=<span class="pl-smi">$DISPLAY</span> \
+-v /tmp/.X11-unix/:/tmp/.X11-unix \
+--device /dev/video0:/dev/video0:mwr \
+--device /dev/video1:/dev/video1:mwr \
+-v /home/jetson/work-pose:/work \
+nvcr.io/nvidia/l4t-ml:r32.5.0-py3</pre></div>
 <h3>Install trt_pose</h3>
 <ol>
 <li>Install necessary stuffs refering the URLs above</li>
