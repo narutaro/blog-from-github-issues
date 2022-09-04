@@ -105,7 +105,7 @@
 --device /dev/video1:/dev/video1:mwr \
 -v /home/jetson/work-pose:/work \
 nvcr.io/nvidia/l4t-ml:r32.5.0-py3</pre></div>
-<h3>Install trt_pose</h3>
+<h2>Install trt_pose</h2>
 <ol>
 <li>Install necessary stuffs refering the URLs above</li>
 <li>Use <code class="notranslate">ipynb</code> file</li>
@@ -120,13 +120,19 @@ nvcr.io/nvidia/l4t-ml:r32.5.0-py3</pre></div>
 <span class="pl-mi1"><span class="pl-mi1">+</span>                        position = { "ts": ts, "tis": tis, "cid": j+1, "x": x, "y": x }</span>
 <span class="pl-mi1"><span class="pl-mi1">+</span>                        f.write(json.dumps(position) + "\n")</span>
 </pre></div>
-<h3>Install aws cli</h3>
+<ol start="4">
+<li>Build again</li>
+</ol>
+<pre class="notranslate"><code class="notranslate">cd /work/torch2trt/trt_pose
+python3 setup.py install
+</code></pre>
+<h2>Install aws cli</h2>
 <p><a href="https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/cli-chap-getting-started.html" rel="nofollow">https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/cli-chap-getting-started.html</a></p>
 <p>Make sure you select <strong>Linux</strong> section and <strong>Linux ARM</strong> tab</p>
 <p>You need install some packages before run the aws command</p>
 <pre class="notranslate"><code class="notranslate">apt-get install less groff
 </code></pre>
-<h3>Setup a thing</h3>
+<h2>Setup a thing</h2>
 <pre class="notranslate"><code class="notranslate">mkdir thing &amp;&amp; cd thing
 
 aws iot create-thing --thing-name jetson
@@ -142,7 +148,7 @@ aws iot create-keys-and-certificate \
 
 aws iot attach-policy --policy-name p1 --target $(jq -r .certificateArn certs-and-keys.json)
 </code></pre>
-<h3>Install mosquitto</h3>
+<h2>Install mosquitto</h2>
 <p><a href="https://mosquitto.org/download/" rel="nofollow">https://mosquitto.org/download/</a></p>
 <p>You may need to run this before</p>
 <pre class="notranslate"><code class="notranslate">apt-get install software-properties-common
@@ -152,11 +158,11 @@ aws iot attach-policy --policy-name p1 --target $(jq -r .certificateArn certs-an
 apt-get update
 apt-get install mosquitto-clients
 </code></pre>
-<h3>Publish test</h3>
+<h2>Publish test</h2>
 <pre class="notranslate"><code class="notranslate">./shaper.sh ../circle.log.1 | mosquitto_pub --cafile AmazonRootCA1.pem --cert device.pem.crt --key private.pem.key -h a3su8icnk38ik7-ats.iot.ap-northeast-1.amazonaws.com -p 8883 -t pose -i jetson -d -l
 </code></pre>
 <p>You can check the messege coming in the web console</p>
-<h3>Numbering</h3>
+<h2>Numbering</h2>
 <pre class="notranslate"><code class="notranslate">more human_pose.json 
 {"supercategory": "person", "id": 1, "name": "person", "keypoints": ["nose", "left_eye", "right_eye", "left_ear", "right_ear", "left_shoulder", "right_shoulder", "left_elbow", "right_elbow",
  "left_wrist", "right_wrist", "left_hip", "right_hip", "left_knee", "right_knee", "left_ankle", "right_ankle", "neck"], "skeleton": [[16, 14], [14, 12], [17, 15], [15, 13], [12, 13], [6, 8],
