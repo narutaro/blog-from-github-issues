@@ -103,13 +103,13 @@
 -v /tmp/.X11-unix/:/tmp/.X11-unix \
 --device /dev/video0:/dev/video0:mwr \
 --device /dev/video1:/dev/video1:mwr \
--v /home/jetson/work-pose:/work \
+-v /home/jetson/work-pose:/work <span class="pl-cce">\ </span>   <span class="pl-c"><span class="pl-c">#</span> NOTE</span>
 nvcr.io/nvidia/l4t-ml:r32.5.0-py3</pre></div>
 <h2>Install trt_pose</h2>
 <ol>
 <li>Install necessary stuffs refering the URLs above</li>
 <li>Use <code class="notranslate">ipynb</code> file</li>
-<li>Patch <code class="notranslate">/work/torch2trt/trt_pose/trt_pose/parse_objects.py</code> as follows</li>
+<li>Patch <code class="notranslate">/work/torch2trt/trt_pose/trt_pose/draw_objects.py</code> as follows</li>
 </ol>
 <div class="highlight highlight-source-diff"><pre>                     x = round(float(peak[1]) * width)
                      y = round(float(peak[0]) * height)
