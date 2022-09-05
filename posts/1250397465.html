@@ -52,7 +52,7 @@
     </nav>
     <hgroup>
       <h1><i class="fa-brands fa-github"></i> TOOL BOX</h1>
-      <h2><i class="fa-regular fa-calendar-days"></i>Sep 3rd, 2022
+      <h2><i class="fa-regular fa-calendar-days"></i>Sep 5th, 2022
       </h2>
     </hgroup>
   </header>
@@ -60,22 +60,18 @@
   <main>
     <h1>AWS</h1>
 <h2>AWS CLI Profile</h2>
-<ul>
-<li>Set a profile</li>
-</ul>
+<p>You can have multiple profiles and switch around.</p>
+<p><strong>Create a profile</strong></p>
 <pre class="notranslate"><code class="notranslate">aws configure --profile &lt;profile_name&gt;
 </code></pre>
-<p>The setting will be stored in <code class="notranslate">~/.aws/credentials</code></p>
-<ul>
-<li>Use a profile</li>
-</ul>
+<p>The keys will be stored in <code class="notranslate">~/.aws/credentials</code>, region goes to <code class="notranslate">~/.aws/config</code></p>
+<p><strong>Use a profile</strong></p>
 <pre class="notranslate"><code class="notranslate">export AWS_PROFILE=&lt;profile_name&gt;
 </code></pre>
 <p>Related commands and configuration files:</p>
 <ul>
 <li><code class="notranslate">aws configure list</code></li>
 <li><code class="notranslate">aws sts get-caller-identity </code></li>
-<li><code class="notranslate">~/.aws/config</code></li>
 </ul>
 <h2>Cloudwatch logs</h2>
 <p>You can <code class="notranslate">tail -f</code> for the Amazon CloudWatch logs.</p>
