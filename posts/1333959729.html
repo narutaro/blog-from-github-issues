@@ -52,7 +52,7 @@
     </nav>
     <hgroup>
       <h1><i class="fa-brands fa-github"></i> bf note</h1>
-      <h2><i class="fa-regular fa-calendar-days"></i>Sep 4th, 2022
+      <h2><i class="fa-regular fa-calendar-days"></i>Sep 5th, 2022
       </h2>
     </hgroup>
   </header>
@@ -159,6 +159,14 @@ apt-get update
 apt-get install mosquitto-clients
 </code></pre>
 <h2>Publish test</h2>
+<p><code class="notranslate">shaper.sh</code></p>
+<div class="highlight highlight-source-shell"><pre><span class="pl-c"><span class="pl-c">#!</span>/bin/bash</span>
+
+<span class="pl-k">while</span> <span class="pl-c1">read</span> line
+<span class="pl-k">do</span>
+  <span class="pl-c1">echo</span> <span class="pl-smi">$line</span>
+  sleep 0.2
+<span class="pl-k">done</span> <span class="pl-k">&lt;</span> <span class="pl-smi">$1</span></pre></div>
 <pre class="notranslate"><code class="notranslate">./shaper.sh ../circle.log.1 | mosquitto_pub --cafile AmazonRootCA1.pem --cert device.pem.crt --key private.pem.key -h a3su8icnk38ik7-ats.iot.ap-northeast-1.amazonaws.com -p 8883 -t pose -i jetson -d -l
 </code></pre>
 <p>You can check the messege coming in the web console</p>
