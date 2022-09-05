@@ -67,6 +67,19 @@
   <span class="pl-s"><span class="pl-pds">"</span>oid<span class="pl-pds">"</span></span>: 1,
   <span class="pl-s"><span class="pl-pds">"</span>pid<span class="pl-pds">"</span></span>: 0
 }</pre></div>
+<p>Multiple values</p>
+<div class="highlight highlight-source-shell"><pre>cat person.log <span class="pl-k">|</span> jq -c <span class="pl-s"><span class="pl-pds">'</span>.pos | [.nose.y, .right_wrist.y]<span class="pl-pds">'</span></span> 
+[170,null]
+[null,null]
+[166,null]
+[null,null]
+[161,null]
+[156,null]
+[null,null]
+[150,null]
+[null,null]
+[145,null]
+[null,null]</pre></div>
   </main>
 
   <footer>
