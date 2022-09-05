@@ -32,6 +32,7 @@
 
   <!-- Pico classless -->
   <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.classless.min.css">
+  <link rel="stylesheet" href="/blog/css/theme.css">
 
   <!-- starry-night/style/high-contrast.css -->
   <link rel="stylesheet" href="/blog/css/dimmed.css">
@@ -45,13 +46,13 @@
     <nav>
       <ul></ul>
       <ul>
-        <li><a href=""><i class="fa-solid fa-list-ol"></i></a></li>
+        <li><a href="../"><i class="fa-solid fa-list-ol"></i></a></li>
         <li><a href="https:&#x2F;&#x2F;github.com&#x2F;narutaro&#x2F;blog&#x2F;issues&#x2F;20"><i class="fa-solid fa-gear"></i></a></li>
       </ul>
     </nav>
     <hgroup>
       <h1><i class="fa-brands fa-github"></i> jq</h1>
-      <h2><i class="fa-regular fa-calendar-days"></i>Sep 2nd, 2022
+      <h2><i class="fa-regular fa-calendar-days"></i>Sep 5th, 2022
         <i class="fa-solid fa-tag"></i>json
       </h2>
     </hgroup>
@@ -60,6 +61,12 @@
   <main>
     <div class="highlight highlight-source-shell"><pre>aws iot list-things <span class="pl-k">|</span> jq <span class="pl-s"><span class="pl-pds">'</span> .[][] | select(.thingName == "c2")<span class="pl-pds">'</span></span></pre></div>
 <p>How can I use regexp?</p>
+<p>Add <code class="notranslate">{ "key": value }</code></p>
+<div class="highlight highlight-source-shell"><pre><span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">'</span>{"oid": 1}<span class="pl-pds">'</span></span> <span class="pl-k">|</span> jq -r <span class="pl-s"><span class="pl-pds">'</span> . + {"pid": 0}<span class="pl-pds">'</span></span>
+{
+  <span class="pl-s"><span class="pl-pds">"</span>oid<span class="pl-pds">"</span></span>: 1,
+  <span class="pl-s"><span class="pl-pds">"</span>pid<span class="pl-pds">"</span></span>: 0
+}</pre></div>
   </main>
 
   <footer>
