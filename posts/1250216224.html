@@ -52,7 +52,7 @@
     </nav>
     <hgroup>
       <h1><i class="fa-brands fa-github"></i> Mosquitto References</h1>
-      <h2><i class="fa-regular fa-calendar-days"></i>Sep 6th, 2022
+      <h2><i class="fa-regular fa-calendar-days"></i>Sep 10th, 2022
         <i class="fa-solid fa-tag"></i>mqtt
       </h2>
     </hgroup>
@@ -219,6 +219,18 @@
   },
   <span class="pl-ent">"payload"</span>: <span class="pl-s"><span class="pl-pds">"</span>vitz<span class="pl-pds">"</span></span>
 }</pre></div>
+<h1>Debug message</h1>
+<p>You can see debug message with <code class="notranslate">-d</code>.</p>
+<pre class="notranslate"><code class="notranslate">Client masainox-t4 sending PUBLISH (d0, q1, r0, m3, 'topic1', ... (1 bytes))
+</code></pre>
+<ol>
+<li>d0 – Dupe flag is 0, this is not a dupe message</li>
+<li>q1 – Quality of Service level is 1</li>
+<li>r0 – Retain flag is 0</li>
+<li>m1 – This is the unique message identifier</li>
+<li>topic1 – This is the topic name</li>
+<li>payload – The server log doesn’t show the payload itself, but it is 1byte.</li>
+</ol>
 <h1>References</h1>
 <ol>
 <li><a href="http://www.steves-internet-guide.com/install-mosquitto-linux/" rel="nofollow">How to Install The Mosquitto MQTT Broker on Linux</a></li>
