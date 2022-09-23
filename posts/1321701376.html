@@ -52,22 +52,21 @@
     </nav>
     <hgroup>
       <h1><i class="fa-brands fa-github"></i> jq</h1>
-      <h2><i class="fa-regular fa-calendar-days"></i>Sep 5th, 2022
+      <h2><i class="fa-regular fa-calendar-days"></i>Sep 23rd, 2022
         <i class="fa-solid fa-tag"></i>json
       </h2>
     </hgroup>
   </header>
 
   <main>
-    <div class="highlight highlight-source-shell"><pre>aws iot list-things <span class="pl-k">|</span> jq <span class="pl-s"><span class="pl-pds">'</span> .[][] | select(.thingName == "c2")<span class="pl-pds">'</span></span></pre></div>
-<p>How can I use regexp?</p>
+    <h1>Add value</h1>
 <p>Add <code class="notranslate">{ "key": value }</code></p>
 <div class="highlight highlight-source-shell"><pre><span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">'</span>{"oid": 1}<span class="pl-pds">'</span></span> <span class="pl-k">|</span> jq -r <span class="pl-s"><span class="pl-pds">'</span> . + {"pid": 0}<span class="pl-pds">'</span></span>
 {
   <span class="pl-s"><span class="pl-pds">"</span>oid<span class="pl-pds">"</span></span>: 1,
   <span class="pl-s"><span class="pl-pds">"</span>pid<span class="pl-pds">"</span></span>: 0
 }</pre></div>
-<p>Multiple values</p>
+<h1>Multiple values</h1>
 <div class="highlight highlight-source-shell"><pre>cat person.log <span class="pl-k">|</span> jq -c <span class="pl-s"><span class="pl-pds">'</span>.pos | [.nose.y, .right_wrist.y]<span class="pl-pds">'</span></span> 
 [170,null]
 [null,null]
@@ -85,6 +84,12 @@
 [71,205]
 [72,210]
 [83,222]</pre></div>
+<h1>Select</h1>
+<p><code class="notranslate">person.json</code></p>
+<div class="highlight highlight-source-json"><pre>{<span class="pl-ent">"ts"</span>:<span class="pl-s"><span class="pl-pds">"</span>2022-09-19T02:36:13.929865<span class="pl-pds">"</span></span>,<span class="pl-ent">"tis"</span>:<span class="pl-c1">1663554973</span>,<span class="pl-ent">"pid"</span>:<span class="pl-c1">1</span>,<span class="pl-ent">"pos"</span>:{<span class="pl-ent">"nose"</span>:{<span class="pl-ent">"x"</span>:<span class="pl-c1">77</span>,<span class="pl-ent">"y"</span>:<span class="pl-c1">62</span>},<span class="pl-ent">"left_eye"</span>:{<span class="pl-ent">"x"</span>:<span class="pl-c1">79</span>,<span class="pl-ent">"y"</span>:<span class="pl-c1">59</span>},<span class="pl-ent">"right_eye"</span>:{<span class="pl-ent">"x"</span>:<span class="pl-c1">75</span>,<span class="pl-ent">"y"</span>:<span class="pl-c1">57</span>},<span class="pl-ent">"left_ear"</span>:{<span class="pl-ent">"x"</span>:<span class="pl-c1">83</span>,<span class="pl-ent">"y"</span>:<span class="pl-c1">54</span>},<span class="pl-ent">"right_ear"</span>:{<span class="pl-ent">"x"</span>:<span class="pl-c1">72</span>,<span class="pl-ent">"y"</span>:<span class="pl-c1">50</span>},<span class="pl-ent">"left_shoulder"</span>:{<span class="pl-ent">"x"</span>:<span class="pl-c1">84</span>,<span class="pl-ent">"y"</span>:<span class="pl-c1">67</span>},<span class="pl-ent">"right_shoulder"</span>:{<span class="pl-ent">"x"</span>:<span class="pl-c1">58</span>,<span class="pl-ent">"y"</span>:<span class="pl-c1">58</span>},<span class="pl-ent">"left_elbow"</span>:{<span class="pl-ent">"x"</span>:<span class="pl-c1">86</span>,<span class="pl-ent">"y"</span>:<span class="pl-c1">89</span>},<span class="pl-ent">"right_elbow"</span>:{<span class="pl-ent">"x"</span>:<span class="pl-c1">48</span>,<span class="pl-ent">"y"</span>:<span class="pl-c1">83</span>},<span class="pl-ent">"left_wrist"</span>:{<span class="pl-ent">"x"</span>:<span class="pl-c1">85</span>,<span class="pl-ent">"y"</span>:<span class="pl-c1">106</span>},<span class="pl-ent">"right_wrist"</span>:{<span class="pl-ent">"x"</span>:<span class="pl-c1">53</span>,<span class="pl-ent">"y"</span>:<span class="pl-c1">103</span>},<span class="pl-ent">"left_hip"</span>:{<span class="pl-ent">"x"</span>:<span class="pl-c1">71</span>,<span class="pl-ent">"y"</span>:<span class="pl-c1">106</span>},<span class="pl-ent">"right_hip"</span>:{<span class="pl-ent">"x"</span>:<span class="pl-c1">55</span>,<span class="pl-ent">"y"</span>:<span class="pl-c1">102</span>},<span class="pl-ent">"left_knee"</span>:{<span class="pl-ent">"x"</span>:<span class="pl-c1">73</span>,<span class="pl-ent">"y"</span>:<span class="pl-c1">139</span>},<span class="pl-ent">"right_knee"</span>:{<span class="pl-ent">"x"</span>:<span class="pl-c1">57</span>,<span class="pl-ent">"y"</span>:<span class="pl-c1">140</span>},<span class="pl-ent">"left_ankle"</span>:{<span class="pl-ent">"x"</span>:<span class="pl-c1">71</span>,<span class="pl-ent">"y"</span>:<span class="pl-c1">171</span>},<span class="pl-ent">"right_ankle"</span>:{<span class="pl-ent">"x"</span>:<span class="pl-c1">57</span>,<span class="pl-ent">"y"</span>:<span class="pl-c1">174</span>},<span class="pl-ent">"neck"</span>:{<span class="pl-ent">"x"</span>:<span class="pl-c1">71</span>,<span class="pl-ent">"y"</span>:<span class="pl-c1">63</span>}}}</pre></div>
+<div class="highlight highlight-source-shell"><pre>cat person.log <span class="pl-k">|</span> jq <span class="pl-s"><span class="pl-pds">'</span>select( .pos | length &gt; 17)<span class="pl-pds">'</span></span></pre></div>
+<div class="highlight highlight-source-shell"><pre>aws iot list-things <span class="pl-k">|</span> jq <span class="pl-s"><span class="pl-pds">'</span> .[][] | select(.thingName == "c2")<span class="pl-pds">'</span></span></pre></div>
+<p>How can I use regexp?</p>
   </main>
 
   <footer>
