@@ -4,7 +4,7 @@ Github action which creates a blog from your Github issues.
 
 # How it works
 
-* Input is [issues](https://github.com/narutaro/blog-from-github-issues/issues) written in Markdown in the repo. Github acitions triggers everytime an issue is added, updated, removed.
+* Input is [issues](https://github.com/narutaro/blog-from-github-issues/issues) written in Markdown in the repo. The Github acitions triggers everytime an issue is added, updated, removed.
 * Output is `index.html` and `post.html`. The demo is [here](https://narutaro.github.io/blog-from-github-issues/). 
 
 
