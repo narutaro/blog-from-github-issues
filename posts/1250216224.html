@@ -86,7 +86,7 @@
 <li>Persistent Session in MQTTv5 can be enabled in case:
 <ul>
 <li><strong>QoS</strong> value is 1 or 2 <code class="notranslate">-q</code></li>
-<li><strong>Clean Session Flag</strong> is 1 which means false <code class="notranslate">-c</code></li>
+<li><strong>Clean Session Flag</strong> is 1 which means false <code class="notranslate">-c</code> or <code class="notranslate">--disable-clean-session</code></li>
 <li><strong>Session Expiration Interval</strong> is larger than 0 <code class="notranslate">-x</code></li>
 </ul>
 </li>
@@ -97,7 +97,7 @@
   -t topic1 \
   -V 5 \
   -q 1 \
-  -c 1 \
+  -c \
   -x 300 \
   -d
 </code></pre>
