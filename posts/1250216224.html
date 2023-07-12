@@ -52,7 +52,7 @@
     </nav>
     <hgroup>
       <h1><i class="fa-brands fa-github"></i> Mosquitto References</h1>
-      <h2><i class="fa-regular fa-calendar-days"></i>Nov 6th, 2022
+      <h2><i class="fa-regular fa-calendar-days"></i>Jul 12th, 2023
         <i class="fa-solid fa-tag"></i>mqtt
       </h2>
     </hgroup>
@@ -60,11 +60,11 @@
 
   <main>
     <h1>Getting started</h1>
-<div class="highlight highlight-source-shell"><pre>mosquitto_sub \
+<div class="highlight highlight-source-shell"><pre class="notranslate">mosquitto_sub \
   -h test.mosquitto.org \
   -t topic1 \
   -d</pre></div>
-<div class="highlight highlight-source-shell"><pre>mosquitto_pub \
+<div class="highlight highlight-source-shell"><pre class="notranslate">mosquitto_pub \
   -h test.mosquitto.org \
   -t topic1 \
   -d \
@@ -95,7 +95,7 @@
   -t topic1 \
   -V 5 \
   -q 1 \
-  -c \
+  -c 1 \
   -x 300 \
   -d
 </code></pre>
@@ -205,7 +205,7 @@
   -l \
   -d
 </code></pre>
-<div class="highlight highlight-source-json"><pre>{
+<div class="highlight highlight-source-json"><pre class="notranslate">{
   <span class="pl-ent">"tst"</span>: <span class="pl-s"><span class="pl-pds">"</span>2022-07-29T09:16:23.635403Z+0000<span class="pl-pds">"</span></span>,
   <span class="pl-ent">"topic"</span>: <span class="pl-s"><span class="pl-pds">"</span>topic1<span class="pl-pds">"</span></span>,
   <span class="pl-ent">"qos"</span>: <span class="pl-c1">0</span>,
